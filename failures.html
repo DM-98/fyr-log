@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What went wrong | FYR production log</title>
+  <meta name="description" content="Every failure told in the production log of FYR, each in a few lines.">
+  <meta property="og:title" content="What went wrong | FYR production log">
+  <meta property="og:description" content="Every failure told in the production log of FYR, each in a few lines.">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#100f0e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23100f0e'/%3E%3Crect x='9' y='3' width='4' height='6' fill='%236fb7d8'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="log.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the content</a>
+  <header class="bar">
+    <div class="bar-in">
+      <a class="brand" href="index.html"><span class="brand-word">FYR</span> <span class="brand-sub">production log</span></a>
+      <nav class="bar-nav" aria-label="Sections">
+        <a href="making.html">How it is made</a>
+        <a href="log.html">Log</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="failures.html" aria-current="page">What went wrong</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="failures-page">
+    <div class="wrap">
+      <h1 class="page-title">What went wrong <span class="count">9</span></h1>
+      <p class="section-note">A glass box shows the cracks too. Every failure the log tells, newest first: what broke, in a few lines, and a link to where it is told in full with what was done about it.</p>
+      <ol class="fcards">
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-13-1744-playtest-package-tools-and-a-stop.html#failed-1">
+            <span class="when">Fri 13 Nov, 17:44</span>
+            <span class="what">The first playable's package failed</span>
+          </a>
+          <p class="fcard-text">The package for the developer's first play was started at 17:16 and failed in the cook at 17:20: with the two editor plugins made editor-only, the cook still found their content and could not cook it. A second attempt at 17:23, which told the cook to leave that content out, tripped a check of its own.</p>
+          <p class="fcard-from">Told in <a href="2026-11-13-1744-playtest-package-tools-and-a-stop.html#failed-1">Catching up, part three: the developer's first look and what each lane did, the first package, the newest tools, and a stop at 17:30</a></p>
+        </li>
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-13-1744-playtest-package-tools-and-a-stop.html#failed-2">
+            <span class="when">Fri 13 Nov, 17:44</span>
+            <span class="what">Every agent stopped at once, and this log fell four hours behind</span>
+          </a>
+          <p class="fcard-text">At about 17:30 every agent working on FYR stopped at the same moment: the week's allowance of the model they ran on had run out. Nothing was lost, because each lane keeps its notes, its branch and its board current; the lanes were restarted from them on another model and carried on.</p>
+          <p class="fcard-from">Told in <a href="2026-11-13-1744-playtest-package-tools-and-a-stop.html#failed-2">Catching up, part three: the developer's first look and what each lane did, the first package, the newest tools, and a stop at 17:30</a></p>
+        </li>
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-13-1743-storm-latency-surfaces-explosions.html#failed-1">
+            <span class="when">Fri 13 Nov, 17:43</span>
+            <span class="what">The first explosions looked like cotton</span>
+          </a>
+          <p class="fcard-text">The first simulations failed in four ways. Smoke and fire came out as clusters of round balls, because the fuel was laid down in a few large blobs. One plume was cut flat where it hit the top of its simulation box. A fireball's fire and smoke split along a straight line.</p>
+          <p class="fcard-from">Told in <a href="2026-11-13-1743-storm-latency-surfaces-explosions.html#failed-1">Catching up, part two: rain on the graphics card, latency measured for real, photoreal rock, and explosions from Blender</a></p>
+        </li>
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-13-1741-the-hut-the-tablet-and-the-rules-of-the-night.html#failed-1">
+            <span class="when">Fri 13 Nov, 17:41</span>
+            <span class="what">Rodin's lens, and gloved hands it could not make</span>
+          </a>
+          <p class="fcard-text">The lens. Rodin's great lens came back with soft, melted-looking rings (a second take with Rodin's de-lighting read as plastic). The developer turned the set down at 13:50 and named the lens as the reason. Twelve minutes later the assets lane had built it in code instead, in Blender: eight bullseye panels, rings of real glass prisms, a brass frame and two handles, 29,000 faces.</p>
+          <p class="fcard-from">Told in <a href="2026-11-13-1741-the-hut-the-tablet-and-the-rules-of-the-night.html#failed-1">Catching up, part one: the hut from Rodin, a lens sent back, the tablet, and the rules of the night</a></p>
+        </li>
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-13-1741-the-hut-the-tablet-and-the-rules-of-the-night.html#failed-2">
+            <span class="when">Fri 13 Nov, 17:41</span>
+            <span class="what">Three rigs before the keeper could walk</span>
+          </a>
+          <p class="fcard-text">For one outside shot on the way to the tower, Rodin rigged the keeper made on Thursday. The first rigging job failed outright: the walk asked for a hips bone the chosen skeleton did not have. The second worked, but the coat ballooned wherever a hand passed it.</p>
+          <p class="fcard-from">Told in <a href="2026-11-13-1741-the-hut-the-tablet-and-the-rules-of-the-night.html#failed-2">Catching up, part one: the hut from Rodin, a lens sent back, the tablet, and the rules of the night</a></p>
+        </li>
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-13-1340-the-skeleton-runs.html#failed-1">
+            <span class="when">Fri 13 Nov, 13:32</span>
+            <span class="what">Every lane's build broke every other lane's game</span>
+          </a>
+          <p class="fcard-text">Each lane has its own copy of the game's code, but they all share one engine, built from source. At 13:22 the integrator found that a build in any worktree quietly relinked one of the engine's modules, and the engine's build tool then gave the engine a new build id.</p>
+          <p class="fcard-from">Told in <a href="2026-11-13-1340-the-skeleton-runs.html#failed-1">The skeleton runs: hut, walk, night, held, hut; and the first honest look at ray tracing</a></p>
+        </li>
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-12-1540-the-first-version.html#failed-1">
+            <span class="when">Thu 12 Nov, 15:40</span>
+            <span class="what">The editor waited for a click nobody could make</span>
+          </a>
+          <p class="fcard-text">At 06:04 the editor started and then did nothing for seven minutes. The preview engine's own project template asks for one version of the build settings and the preview editor wants the next, so it showed a &quot;Target Upgrade Required&quot; box with Yes and No and waited for a person.</p>
+          <p class="fcard-from">Told in <a href="2026-11-12-1540-the-first-version.html#failed-1">Day one: a gun on a lighthouse in a storm</a></p>
+        </li>
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-12-1540-the-first-version.html#failed-2">
+            <span class="when">Thu 12 Nov, 15:40</span>
+            <span class="what">A zip that held nothing</span>
+          </a>
+          <p class="fcard-text">The first packaged build was asked for by Thursday 18:00 and existed at 07:38, but only on the third try, and both failures were the agent's own. The first time, it wrote new menu code while the release build was compiling, and the build picked up the half-tested files.</p>
+          <p class="fcard-from">Told in <a href="2026-11-12-1540-the-first-version.html#failed-2">Day one: a gun on a lighthouse in a storm</a></p>
+        </li>
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-12-1540-the-first-version.html#failed-3">
+            <span class="when">Thu 12 Nov, 15:40</span>
+            <span class="what">The wrong game, for five hours</span>
+          </a>
+          <p class="fcard-text">From 06:00 to about 11:20 the work produced a polished gallery shooter with six scripted scenes and an ending: the film idea had been built as a short story with a gun in it. What the developer wanted was a game you keep playing.</p>
+          <p class="fcard-from">Told in <a href="2026-11-12-1540-the-first-version.html#failed-3">Day one: a gun on a lighthouse in a storm</a></p>
+        </li>
+      </ol>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <p>FYR is a solo entry in the 2026 Epic AI MegaJam (theme: Director's Cut), made between Thursday 12 November and Sunday 15 November 2026, Danish time. Team name: Faluf.</p>
+      <p>This site is built from plain text entries by a small script and holds no tracking, no cookies and no requests to other servers. The game's source is in a private repository; its commit history shows when each thing was made.</p>
+      <p class="foot-links"><a href="index.html">Front page</a> <a href="log.html">All entries</a> <a href="gallery.html">Gallery</a> <a href="failures.html">What went wrong</a> <a href="#top">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>

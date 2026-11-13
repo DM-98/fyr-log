@@ -14,9 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---- 2. old links to an entry on the front page
   const asked = decodeURIComponent(location.hash.slice(1));
-  if (asked && /^\d{4}-\d{2}-\d{2}-\d{4}-[a-z0-9-]+$/.test(asked) && $(`[data-entry-page="${CSS.escape(asked)}"]`)) {
+  if (asked && /^\d{4}-\d{2}-\d{2}-\d{4}-[a-z0-9-]+$/.test(asked) && !document.getElementById(asked)) {
     location.replace(`${asked}.html`);
     return;
+  }
+  // ---- 2b. old links to a section of the front page, now a page of its own
+  if ($('main.front')) {
+    const moved = { making: 'making.html', log: 'log.html', failures: 'failures.html', pictures: 'gallery.html' };
+    const tag = new URLSearchParams(location.search).get('tag');
+    if (asked === 'log' && tag) { location.replace(`log.html?tag=${encodeURIComponent(tag)}`); return; }
+    if (moved[asked] && !document.getElementById(asked)) { location.replace(moved[asked]); return; }
+    if (/^day-/.test(asked) && !document.getElementById(asked)) { location.replace(`log.html#${asked}`); return; }
   }
 
   // ---- 1. show only one kind

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How it is made | FYR production log</title>
+  <meta name="description" content="Who and what makes FYR: the developer, the agents, every tool and its licence.">
+  <meta property="og:title" content="How it is made | FYR production log">
+  <meta property="og:description" content="Who and what makes FYR: the developer, the agents, every tool and its licence.">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#100f0e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23100f0e'/%3E%3Crect x='9' y='3' width='4' height='6' fill='%236fb7d8'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="log.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the content</a>
+  <header class="bar">
+    <div class="bar-in">
+      <a class="brand" href="index.html"><span class="brand-word">FYR</span> <span class="brand-sub">production log</span></a>
+      <nav class="bar-nav" aria-label="Sections">
+        <a href="making.html" aria-current="page">How it is made</a>
+        <a href="log.html">Log</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="failures.html">What went wrong</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="making-page">
+  <section class="section making" id="making" aria-labelledby="making-title">
+    <div class="wrap">
+      <h2 class="section-title" id="making-title">How this game is made</h2>
+      <div class="making-grid">
+        <div class="people">
+          <div class="person"><h3>The developer directs</h3><p>One person. He chose the game and its shape: plan in the hut, walk to the lighthouse, defend from it. He plays the build at every gate, judges the pictures, and says no when something is not good enough. What he asked for and what he thought is retold here in the agent's words.</p></div>
+          <div class="person"><h3>AI coding agents build</h3><p>Claude Code writes all of the game's code (C++ in Unreal Engine 5.9), drives the engine's editor through scripts, and runs every tool below. On Friday several agents work at once, each in its own copy of the code and owning its own files: the hut and the walk, the map and the plan, the lighthouse's stations, the tablet and the guide, the battle and its economy, the look and the storm, explosions, assets and sound, photoreal surfaces, the HUD, a lane that keeps refining whatever looks least real, a verifier that plays the game and hunts for faults, and this log. One of them merges their work and keeps the game building.</p></div>
+          <div class="person"><h3>One PC, one exception</h3><p>Pictures, voices, music, sounds and effects are made on one PC with one graphics card, and so are the small props' 3D models. The other 3D models are the exception: Rodin makes them in the cloud, always from one of our own pictures.</p></div>
+        </div>
+        <div class="tools">
+          <h3 class="minor">Which tool makes what</h3>
+          <dl class="toollist">
+            <div><dt>Code</dt><dd><span class="tool">Claude Code</span> <span class="where">AI coding agents</span><span class="use">All C++ of the game and the editor scripts: the hut, the plan and the live map, the walk, the gun, the laser and the lens, the turrets, the saucers, the storm, the interface. <span class="see">See <a href="2026-11-13-1744-playtest-package-tools-and-a-stop.html" title="Catching up, part three: the developer's first look and what each lane did, the first package, the newest tools, and a stop at 17:30">Fri 13 Nov, 17:44</a>, <a href="2026-11-13-1741-the-hut-the-tablet-and-the-rules-of-the-night.html" title="Catching up, part one: the hut from Rodin, a lens sent back, the tablet, and the rules of the night">Fri 13 Nov, 17:41</a>, <a href="2026-11-13-1340-the-skeleton-runs.html" title="The skeleton runs: hut, walk, night, held, hut; and the first honest look at ray tracing">Fri 13 Nov, 13:32</a></span></span></dd></div>
+            <div><dt>Pictures</dt><dd><span class="tool">MOSS-Image</span> <span class="where">open image model, on this PC</span><span class="use">Studio pictures that 3D models are made from, pictures of the look to aim for, and the turret cards' pictures. Each is shown here with its prompt. BiRefNet cuts them out. <span class="see">See <a href="2026-11-13-1743-storm-latency-surfaces-explosions.html" title="Catching up, part two: rain on the graphics card, latency measured for real, photoreal rock, and explosions from Blender">Fri 13 Nov, 17:43</a>, <a href="2026-11-12-1540-the-first-version.html" title="Day one: a gun on a lighthouse in a storm">Thu 12 Nov, 15:40</a></span></span></dd></div>
+            <div><dt>3D models</dt><dd><span class="tool">Rodin Gen-2.5</span> <span class="where">Hyper3D, cloud</span><span class="use">The lighthouse, the gun and the laser, the saucers and the mothership, the turrets and the rock, and from Friday the keeper's hut with its furniture, the props on the rock, the tablet and the rigged keeper: each from one of our own pictures. Small props are made locally with Pixal3D and TRELLIS.2. <span class="see">See <a href="2026-11-13-1741-the-hut-the-tablet-and-the-rules-of-the-night.html" title="Catching up, part one: the hut from Rodin, a lens sent back, the tablet, and the rules of the night">Fri 13 Nov, 17:41</a>, <a href="2026-11-12-1540-the-first-version.html" title="Day one: a gun on a lighthouse in a storm">Thu 12 Nov, 15:40</a></span></span></dd></div>
+            <div><dt>Surfaces</dt><dd><span class="tool">Marigold V2</span> <span class="where">open model, on this PC</span><span class="use">Colour, surface normals and depth read from our own seamless MOSS-Image pictures, for the photoreal rock, tower, iron and hut. Its normals and depth models were added during the jam after a licence check (Apache-2.0). <span class="see">See <a href="2026-11-13-1743-storm-latency-surfaces-explosions.html" title="Catching up, part two: rain on the graphics card, latency measured for real, photoreal rock, and explosions from Blender">Fri 13 Nov, 17:43</a>, <a href="2026-11-13-1340-the-skeleton-runs.html" title="The skeleton runs: hut, walk, night, held, hut; and the first honest look at ray tracing">Fri 13 Nov, 13:32</a>, <a href="2026-11-12-1540-the-first-version.html" title="Day one: a gun on a lighthouse in a storm">Thu 12 Nov, 15:40</a></span></span></dd></div>
+            <div><dt>Voices</dt><dd><span class="tool">Ming-3.0 TTS</span> <span class="where">open voice model, on this PC</span><span class="use">Designed voices, not copied from anyone: a caller through a megaphone, and a second, dry voice. <span class="see">See <a href="2026-11-12-1540-the-first-version.html" title="Day one: a gun on a lighthouse in a storm">Thu 12 Nov, 15:40</a></span></span></dd></div>
+            <div><dt>Music</dt><dd><span class="tool">ACE-Step 1.5</span> <span class="where">open music model, on this PC</span><span class="use">The title, the storm and the cues of the night. <span class="see">See <a href="2026-11-12-1540-the-first-version.html" title="Day one: a gun on a lighthouse in a storm">Thu 12 Nov, 15:40</a></span></span></dd></div>
+            <div><dt>Sound effects</dt><dd><span class="tool">Our own synthesis</span> <span class="where">Python with NumPy and SciPy</span><span class="use">Every effect computed from noise, tones and filters: the gun and its brass, hits, saucers, the sea, wind and rain, the clapper's snap. No recorded samples. <span class="see">See <a href="2026-11-12-1540-the-first-version.html" title="Day one: a gun on a lighthouse in a storm">Thu 12 Nov, 15:40</a></span></span></dd></div>
+            <div><dt>Explosions, fire and smoke</dt><dd><span class="tool">Blender</span> <span class="where">on this PC</span><span class="use">Smoke and fire simulated in Blender and rendered to sprite sheets, on top of the game's own particles, debris and flashes. Blender scripts of our own also build the great lens, the gun platform and the lit lantern. <span class="see">See <a href="2026-11-13-1743-storm-latency-surfaces-explosions.html" title="Catching up, part two: rain on the graphics card, latency measured for real, photoreal rock, and explosions from Blender">Fri 13 Nov, 17:43</a></span></span></dd></div>
+            <div><dt>Light and weather</dt><dd><span class="tool">Our own code</span> <span class="where">in the engine</span><span class="use">The night and its storm, rain and lightning, the lamp's beam, exposure. No ready-made effect.</span></dd></div>
+            <div><dt>The engine</dt><dd><span class="tool">Unreal Engine 5.9</span> <span class="where">MegaJam Preview, built from source</span><span class="use">Everything runs in it; its ocean, sky, cloud and basic shapes are used and declared. NVIDIA DLSS and Reflex are in the settings. <span class="see">See <a href="2026-11-13-1743-storm-latency-surfaces-explosions.html" title="Catching up, part two: rain on the graphics card, latency measured for real, photoreal rock, and explosions from Blender">Fri 13 Nov, 17:43</a>, <a href="2026-11-13-1340-the-skeleton-runs.html" title="The skeleton runs: hut, walk, night, held, hut; and the first honest look at ray tracing">Fri 13 Nov, 13:32</a></span></span></dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="sourced-grid">
+        <div>
+          <h3 class="minor">From outside: what was not made here</h3>
+          <ul class="sourced">
+            <li><strong>Unreal Engine's own content</strong> the Water plugin's ocean, sky, cloud and fog, basic shapes, an engine noise texture, the glTF importer's base material, the engine's fonts. <span class="licence">engine licence</span></li>
+            <li><strong>NVIDIA DLSS and Reflex</strong> the upscaling plugin and the engine's low-latency plugin, named in words only (no logos). <span class="licence">NVIDIA's licence</span></li>
+            <li><strong>This site's fonts</strong> Big Shoulders Display and Source Serif 4, not in the game. <span class="licence">SIL Open Font Licence</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="minor">Made before the jam</h3>
+          <p class="before">The engine build, the AI tools and their settings, the build and packaging scripts, this site's generator, and FYR's first design and prompt library on paper (written on the evening of 11 November, after the theme was announced) were prepared before the jam began, as the rules allow, and are declared with the entry. The lighthouse defence itself is the developer's own idea from before the jam. No game content (no code of the game, picture, model, sound or level) was made before Thursday 12 November, 06:00 Danish time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <p>FYR is a solo entry in the 2026 Epic AI MegaJam (theme: Director's Cut), made between Thursday 12 November and Sunday 15 November 2026, Danish time. Team name: Faluf.</p>
+      <p>This site is built from plain text entries by a small script and holds no tracking, no cookies and no requests to other servers. The game's source is in a private repository; its commit history shows when each thing was made.</p>
+      <p class="foot-links"><a href="index.html">Front page</a> <a href="log.html">All entries</a> <a href="gallery.html">Gallery</a> <a href="failures.html">What went wrong</a> <a href="#top">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>
