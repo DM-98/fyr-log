@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The skeleton runs: hut, walk, night, held, hut; and the first honest look at ray tracing | FYR production log</title>
+  <meta name="description" content="The integrator's seams are in, and a bot plays the new loop for three nights, including a CUT on the tablet and a lost night shot again as TAKE 2. The render lane measures latency for the first time and compares ray…">
+  <meta property="og:title" content="The skeleton runs: hut, walk, night, held, hut; and the first honest look at ray tracing | FYR production log">
+  <meta property="og:description" content="The integrator's seams are in, and a bot plays the new loop for three nights, including a CUT on the tablet and a lost night shot again as TAKE 2. The render lane measures latency for the first time and compares ray…">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#100f0e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23100f0e'/%3E%3Crect x='9' y='3' width='4' height='6' fill='%236fb7d8'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="log.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the content</a>
+  <header class="bar">
+    <div class="bar-in">
+      <a class="brand" href="index.html"><span class="brand-word">FYR</span> <span class="brand-sub">production log</span></a>
+      <nav class="bar-nav" aria-label="Sections">
+        <a href="index.html#making">How it is made</a>
+        <a href="index.html#log">Log</a>
+        <a href="pictures.html">Pictures</a>
+        <a href="index.html#failures">What went wrong</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="entry-page">
+    <article class="entry" id="2026-11-13-1340-the-skeleton-runs" data-kinds="process code render failure">
+      <header class="entry-head">
+        <p class="crumbs"><a href="index.html#log">The log</a> <span aria-hidden="true">/</span> <a href="index.html#day-2">Day 2</a></p>
+        <p class="slate"><span>Day 2</span> <span>Friday 13 November</span> <time datetime="2026-11-13T13:40">13:40</time></p>
+        <h1>The skeleton runs: hut, walk, night, held, hut; and the first honest look at ray tracing</h1>
+        <p class="entry-facts">4 pictures <span aria-hidden="true">·</span> <a href="#failed-1" class="failed">1 failure</a> <span aria-hidden="true">·</span> 4 min read</p>
+        <p class="entry-tags"><a class="tag" href="index.html?tag=process#log">how it is run</a> <a class="tag" href="index.html?tag=code#log">code</a> <a class="tag" href="index.html?tag=render#log">render</a> <a class="tag failure" href="index.html?tag=failure#log">failure</a></p>
+        <p class="gate"><span>Checkpoint</span> The seams are in; the lanes start</p>
+      <nav class="toc" aria-labelledby="toc-2026-11-13-1340-the-skeleton-runs">
+        <h2 id="toc-2026-11-13-1340-the-skeleton-runs">In this entry</h2>
+        <ol>
+          <li><a href="#the-seams-and-a-loop-a-bot-can-play">The seams, and a loop a bot can play</a></li>
+          <li><a href="#latency-had-never-been-measured">Latency had never been measured</a></li>
+          <li><a href="#ray-tracing-against-the-first-version-s-look">Ray tracing against the first version's look</a></li>
+          <li><a href="#next">Next</a></li>
+        </ol>
+      </nav>
+      </header>
+      <div class="body cols">
+<p>While the plan in the last entry was being written down, the integrator was writing the first code of the rebuild. It is in now, and the other lanes start from it.</p>
+<h6 id="the-seams-and-a-loop-a-bot-can-play">The seams, and a loop a bot can play</h6>
+<p>At 13:29 the integrator committed the seams: the shared parts every lane builds against. 35 files, about 1,800 new lines: the two new phases of a night (the hut and the walk) added to the director, the one-second &quot;NIGHT 1&quot; card, the tablet that pauses the world, buying and placing a turret from the plan, the three stations of the lighthouse, and a painter for the map that the PC, the tablet and the live map will all share. Each lane's part is a stub that does the simplest correct thing, so the loop runs from the first minute and each lane fills in its own piece.</p>
+<p>Proof is a run, not a review: the bot played three nights in a row, from the hut through READY, the walk, the night card and the fight, to &quot;held&quot; and back to the hut. It opened the tablet in the middle of a night and closed it again. It lost a night on purpose and came back to the hut on TAKE 2 with exactly the credits and turrets it had at READY.</p>
+<p>None of what follows is what a player will see. These are the stand-ins the lanes now replace.</p>
+<figure id="fig-1"><a class="zoom" href="media/full/2026-11-13-1330-skeleton-hut.jpg"><img src="media/2026-11-13-1330-skeleton-hut.jpg" srcset="media/thumb/2026-11-13-1330-skeleton-hut.jpg 640w, media/2026-11-13-1330-skeleton-hut.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The hut's plan as a stand-in: the 14 pads are squares on flat blue, the cards are plain grey buttons. The map and plan lane draws the chart over this next." width="1600" height="900" loading="lazy" decoding="async"></a><figcaption aria-hidden="true">The hut's plan as a stand-in: the 14 pads are squares on flat blue, the cards are plain grey buttons. The map and plan lane draws the chart over this next.</figcaption></figure>
+<figure id="fig-2"><a class="zoom" href="media/full/2026-11-13-1330-skeleton-tablet.jpg"><img src="media/2026-11-13-1330-skeleton-tablet.jpg" srcset="media/thumb/2026-11-13-1330-skeleton-tablet.jpg 640w, media/2026-11-13-1330-skeleton-tablet.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="CUT! in the middle of Night 1: the world is frozen behind a stand-in tablet with the same plan on it. The banner at the top right is one of the first version's 64 achievements, which are being replaced by 30 plain honours." width="1600" height="900" loading="lazy" decoding="async"></a><figcaption aria-hidden="true">CUT! in the middle of Night 1: the world is frozen behind a stand-in tablet with the same plan on it. The banner at the top right is one of the first version's 64 achievements, which are being replaced by 30 plain honours.</figcaption></figure>
+<figure id="fig-3"><a class="zoom" href="media/full/2026-11-13-1330-skeleton-lost.jpg"><img src="media/2026-11-13-1330-skeleton-lost.jpg" srcset="media/thumb/2026-11-13-1330-skeleton-lost.jpg 640w, media/2026-11-13-1330-skeleton-lost.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="A lost night: THE LAMP WENT DARK, and nothing owned is lost. A key press later the keeper is back at his PC on Night 1, TAKE 2." width="1600" height="900" loading="lazy" decoding="async"></a><figcaption aria-hidden="true">A lost night: THE LAMP WENT DARK, and nothing owned is lost. A key press later the keeper is back at his PC on Night 1, TAKE 2.</figcaption></figure>
+<aside class="failure" id="failed-1"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>Every lane's build broke every other lane's game</strong></p>
+<p>Each lane has its own copy of the game's code, but they all share one engine, built from source. At 13:22 the integrator found that a build in any worktree quietly relinked one of the engine's modules, and the engine's build tool then gave the engine a new build id. The game's module and the NVIDIA DLSS plugin in every other worktree were built against the old id, so they stopped loading (&quot;module could not be found&quot;). So each lane that built broke the others' runs, without touching their files. The fix: the engine's build id is pinned in its version file, so a rebuild no longer changes it; each tree builds once more and then holds. Splitting the code into worktrees did not split the engine, and nobody had thought about that until it broke.</p></aside>
+<h6 id="latency-had-never-been-measured">Latency had never been measured</h6>
+<p>The developer asked for low latency, and the game has NVIDIA Reflex. But every run of the first version had logged its latency as -1: not a measurement. The render lane found why. The engine's Reflex plugin registers two latency-marker modules, one that reads the driver's frame reports and one that only streams events for outside tools and always reads zero, and the game had switched on only the second. Both are on now, and the game can show a small latency panel.</p>
+<p>The first reading, in a 1280 by 720 window with the bot at the gun and Reflex on with Boost: <strong>8.2 ms</strong> from input to picture (6.2 ms in the game's own work, 3.1 in rendering), at 231 frames a second. The target is 20 ms or less in a full storm at 1440p; the full measurement comes from a run with nothing else on the card.</p>
+<h6 id="ray-tracing-against-the-first-version-s-look">Ray tracing against the first version's look</h6>
+<p>The first version used neither Lumen (the engine's global illumination) nor hardware ray tracing. The design's rule: they are switched on by default only if they are clearly better. The render lane wrote a small tour that stops the bot's night with 30 saucers in front of the gun, then takes the same frame in each lighting mode and times it with nothing else running.</p>
+<figure id="fig-4"><a class="zoom" href="media/full/2026-11-13-1308-ray-tracing-gun.jpg"><img src="media/2026-11-13-1308-ray-tracing-gun.jpg" srcset="media/thumb/2026-11-13-1308-ray-tracing-gun.jpg 640w, media/2026-11-13-1308-ray-tracing-gun.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The same frozen frame at the gun in four lighting modes, with 30 scouts and a burst of flak. Pictures from the running game." width="1600" height="900" loading="lazy" decoding="async"></a><figcaption aria-hidden="true">The same frozen frame at the gun in four lighting modes, with 30 scouts and a burst of flak. Pictures from the running game.</figcaption></figure>
+<div class="table"><table><thead><tr><th>Card time per frame, 1440p, DLSS Quality</th><th>first version</th><th>Lumen (software)</th><th>ray tracing + Ray Reconstruction</th><th>ray tracing + its shadows + Ray Reconstruction</th></tr></thead><tbody><tr><td>at the gun</td><td>3.19 ms</td><td>4.10 ms</td><td>5.09 ms</td><td>4.74 ms</td></tr><tr><td>the rock</td><td>3.31 ms</td><td>3.70 ms</td><td>4.87 ms</td><td>4.66 ms</td></tr><tr><td>a saucer</td><td>3.74 ms</td><td>4.23 ms</td><td>5.40 ms</td><td>5.31 ms</td></tr></tbody></table></div>
+<p>The verdicts, from the pictures:</p>
+<ul><li><strong>Software Lumen</strong> brightens the gun and the gloves and puts a speckled pattern on the left sleeve. That is a visual bug, so it stays off.</li><li><strong>Ray-traced shadows</strong> put black blotches on the tower and on the saucers' hulls: the high-detail meshes shadow themselves through the simpler stand-in meshes the ray tracer uses. They are never a default.</li><li><strong>Ray tracing with NVIDIA DLSS Ray Reconstruction</strong> is clean and costs 1.2 to 1.9 ms a frame. On this dark, dry frame it looks very close to the first version, so it has not yet earned its place. It gets its chance in the wet: the storm's rain and wet surfaces are being added, and wet metal and water are where reflections show.</li></ul>
+<p>Every mode is far inside the card's budget (8 ms at 1440p). What limits the frame rate today is the engine's render thread, not the graphics card: 122 to 200 frames a second at 1440p.</p>
+<h6 id="next">Next</h6>
+<p>Five more lanes started at 13:30 from the seams: the hut and the walk, the map and the plan, the stations, the tablet and the guide, the battle and the economy. The first playable loop is for the developer at about 19:00.</p>
+      </div>
+    </article>
+    <nav class="turn" aria-label="Earlier and later entries">
+      <a class="turn-prev" href="2026-11-13-1320-the-rebuild-planned.html" rel="prev"><span class="turn-label">Earlier</span><span class="turn-pic"><img src="media/2026-11-13-1320-the-loop.svg" alt="" loading="lazy" decoding="async"></span><span class="turn-when">Fri 13 Nov, 13:20</span><span class="turn-title">Day two: the rebuild, planned around the hut, the walk and three ways to fight</span></a>
+      <span class="turn-none"></span>
+    </nav>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <p>FYR is a solo entry in the 2026 Epic AI MegaJam (theme: Director's Cut), made between Thursday 12 November and Sunday 15 November 2026, Danish time. Team name: Faluf.</p>
+      <p>This site is built from plain text entries by a small script and holds no tracking, no cookies and no requests to other servers. The game's source is in a private repository; its commit history shows when each thing was made.</p>
+      <p class="foot-links"><a href="index.html">Front page</a> <a href="index.html#log">All entries</a> <a href="pictures.html">All pictures</a> <a href="#top">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>
