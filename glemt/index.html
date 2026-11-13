@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GLEMT: production log</title>
+  <meta name="description" content="The production log of GLEMT, a first-person horror game made in four days for Epic's 2026 AI MegaJam by one developer directing AI coding agents: what was built, with which tool and prompt, and what went wrong, written while it happened.">
+  <meta property="og:title" content="GLEMT: production log">
+  <meta property="og:description" content="The production log of GLEMT, a first-person horror game made in four days for Epic's 2026 AI MegaJam by one developer directing AI coding agents: what was built, with which tool and prompt, and what went wrong, written while it happened.">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#100f0e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23100f0e'/%3E%3Crect x='9' y='3' width='4' height='6' fill='%23e9b25a'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="log.js"></script>
+</head>
+<body>
+  <div class="annex-bar"><a class="annex-back" href="../index.html">&larr; Back to FYR's log</a> <span class="annex-note">GLEMT was set aside on 13 November 2026 and is not the entry. This is its log as it stood.</span></div>
+  <a class="skip" href="#main">Skip to the content</a>
+  <header class="bar">
+    <div class="bar-in">
+      <a class="brand" href="index.html"><span class="brand-word">GLEMT</span> <span class="brand-sub">production log</span></a>
+      <nav class="bar-nav" aria-label="Sections">
+        <a href="index.html#making">How it is made</a>
+        <a href="index.html#log">Log</a>
+        <a href="pictures.html">Pictures</a>
+        <a href="index.html#failures">What went wrong</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="front">
+  <section class="hero" aria-labelledby="game-title" id="game">
+    <div class="wrap hero-head">
+      <div class="hero-name">
+        <h1 class="title" id="game-title">GLEMT</h1>
+        <p class="gloss"><em>Glemt</em> is Danish for &quot;forgotten&quot;.</p>
+      </div>
+      <div class="hero-says">
+        <p class="kicker">A first-person horror game for Epic's 2026 AI MegaJam (theme: Director's Cut), made in four days by one developer directing AI agents</p>
+        <div class="lede">
+          <p>You have bought a dead film director's mansion with everything in it, and you have four days to empty it, floor by floor, onto the moving truck in the drive or the bonfire in the yard.</p>
+          <p>The house has no light, each day runs into dark, and after dusk the old man walks his house again and finds you by the light you carry.</p>
+        </div>
+      </div>
+    </div>
+    <figure class="hero-picture wrap-wide">
+      <a class="zoom" href="media/full/2026-11-13-0615-chair-burning.jpg"><img src="media/2026-11-13-0615-chair-burning.jpg" srcset="media/thumb/2026-11-13-0615-chair-burning.jpg 640w, media/2026-11-13-0615-chair-burning.jpg 1600w" sizes="(max-width: 72rem) 100vw, 72rem" alt="A high-backed dining chair burning on the bonfire in the yard at dusk, three torches stuck in the ground beside it, the buyer holding an old instant camera." width="1600" height="900" fetchpriority="high" decoding="async"></a>
+      <figcaption class="cap"><span class="kind">From the running game</span> The last chair of day one on the bonfire, in the packaged game, Friday just after five in the morning. <a href="2026-11-13-0615-morning.html">Read the entry</a></figcaption>
+    </figure>
+    <div class="wrap hero-text">
+      <aside class="now" aria-label="Where the work stands">
+        <p class="slate"><span>Day 2 of 4</span> <span>Fri 13 Nov, 06:15</span></p>
+        <p class="now-text">Morning of day two. After one night of eight agents, day one plays from the title to bed and the tally, in the packaged game started from its zip. Still wrong: the night indoors is far too light, the first room is bare, the zip is nearly 2 GB, and days two to four have not been played. The developer plays it this morning.</p>
+        <p class="now-latest">Latest entry: <a href="2026-11-13-0615-morning.html"><time datetime="2026-11-13T06:15">Fri 13 Nov, 06:15</time> The morning after: what one night of eight agents made, in plain words</a></p>
+      </aside>
+    </div>
+  </section>
+  <section class="section newest" id="pictures" aria-labelledby="pictures-title">
+    <div class="wrap">
+      <h2 class="section-title" id="pictures-title">Newest pictures from the running game</h2>
+      <ul class="strip">
+        <li><a class="zoom" href="media/full/2026-11-13-0615-buyers-room.jpg"><img src="media/thumb/2026-11-13-0615-buyers-room.jpg" alt="The buyer's room by day: pale plaster walls, three windows, a dark wooden floor, a camp bed and three cardboard boxes, nothing else." width="640" height="360" loading="lazy" decoding="async"></a><div class="cap"><p>The buyer's room, 04:34.</p><p class="from"><span class="kind">From the running game</span> <a href="2026-11-13-0615-morning.html#fig-11">Fri 13 Nov, 06:15</a></p></div></li>
+        <li><a class="zoom" href="media/full/2026-11-13-0615-too-light.jpg"><img src="media/thumb/2026-11-13-0615-too-light.jpg" alt="The dining room at night with the flashlight on: the whole room evenly lit, warm, the far walls clear, as if the chandelier were on." width="640" height="360" loading="lazy" decoding="async"></a><div class="cap"><p>Night, flashlight on, 04:34: far too light for a house with no power.</p><p class="from"><span class="kind">From the running game</span> <a href="2026-11-13-0615-morning.html#fig-10">Fri 13 Nov, 06:15</a></p></div></li>
+        <li><a class="zoom" href="media/full/2026-11-13-0615-hut-night.jpg"><img src="media/thumb/2026-11-13-0615-hut-night.jpg" alt="The wood hut at night by flashlight: weathered boards, the door open, the wood stacked inside, a chopping block with an axe in front." width="640" height="360" loading="lazy" decoding="async"></a><div class="cap"><p>The hut at night, 04:34.</p><p class="from"><span class="kind">From the running game</span> <a href="2026-11-13-0615-morning.html#fig-9">Fri 13 Nov, 06:15</a></p></div></li>
+        <li><a class="zoom" href="media/full/2026-11-13-0615-forest-night.jpg"><img src="media/thumb/2026-11-13-0615-forest-night.jpg" alt="The forest path at night by flashlight: a pool of light on the path, a fallen trunk, shrubs, conifers in the dark." width="640" height="360" loading="lazy" decoding="async"></a><div class="cap"><p>The forest at night, 04:34.</p><p class="from"><span class="kind">From the running game</span> <a href="2026-11-13-0615-morning.html#fig-8">Fri 13 Nov, 06:15</a></p></div></li>
+        <li><a class="zoom" href="media/full/2026-11-13-0615-director.jpg"><img src="media/thumb/2026-11-13-0615-director.jpg" alt="The Director in the kitchen by flashlight: a gaunt, grey-green dead old man in a brown corduroy jacket and scarf, a clapperboard in his hand, about two and a half metres away." width="640" height="360" loading="lazy" decoding="async"></a><div class="cap"><p>The Director, 2.5 metres off, 04:34. The guide warns: your light can be seen.</p><p class="from"><span class="kind">From the running game</span> <a href="2026-11-13-0615-morning.html#fig-7">Fri 13 Nov, 06:15</a></p></div></li>
+        <li><a class="zoom" href="media/full/2026-11-13-0615-dining-dusk.jpg"><img src="media/thumb/2026-11-13-0615-dining-dusk.jpg" alt="The dining room at dusk: the long table, red velvet chairs, the chandelier, the last warm light in the windows." width="640" height="360" loading="lazy" decoding="async"></a><div class="cap"><p>The dining room at dusk, 04:34.</p><p class="from"><span class="kind">From the running game</span> <a href="2026-11-13-0615-morning.html#fig-6">Fri 13 Nov, 06:15</a></p></div></li>
+      </ul>
+      <p class="more"><a href="pictures.html">All 66 pictures in order, with before and after</a></p>
+    </div>
+  </section>
+  <section class="section making" id="making" aria-labelledby="making-title">
+    <div class="wrap">
+      <h2 class="section-title" id="making-title">How this game is made</h2>
+      <div class="making-grid">
+        <div class="people">
+          <div class="person"><h3>The developer directs</h3><p>One person. He set the premise and the bar for the look, plays each evening's build, judges the pictures, and says no when something is not good enough. What he asked for and what he thought is retold here in the agent's words.</p></div>
+          <div class="person"><h3>AI coding agents build</h3><p>Claude Code writes all of the game's code (C++ in Unreal Engine 5.9), drives the engine's editor through scripts, and runs every tool below. Since Thursday evening several agents work at once in one copy of the project, each owning its own files: the house, the grounds, light, the Director, the game's rules, sound, objects, a verifier that plays the game and hunts for faults, and this log. Up to eight at a time.</p></div>
+          <div class="person"><h3>One PC, one exception</h3><p>Pictures, voices, music and sounds are made on one PC with one graphics card. The 3D models are the exception: Rodin makes them in the cloud, always from one of our own pictures.</p></div>
+        </div>
+        <div class="tools">
+          <h3 class="minor">Which tool makes what</h3>
+          <dl class="toollist">
+            <div><dt>Code</dt><dd><span class="tool">Claude Code</span> <span class="where">AI coding agents</span><span class="use">All C++ of the game and the editor scripts; the rules, the house and grounds built from data, light and fire, the Director's movement. <span class="see">See <a href="2026-11-13-0615-morning.html" title="The morning after: what one night of eight agents made, in plain words">Fri 13 Nov, 06:15</a>, <a href="2026-11-13-0430-floor-cleared.html" title="Half past four: day one is cleared on foot, the ground comes back, and the Director gets his face">Fri 13 Nov, 04:30</a>, <a href="2026-11-13-0030-midnight.html" title="Midnight: a correction, doors that let you through, and a fairer night">Fri 13 Nov, 00:30</a></span></span></dd></div>
+            <div><dt>Pictures</dt><dd><span class="tool">MOSS-Image</span> <span class="where">open image model, on this PC</span><span class="use">Studio pictures that 3D models are made from, and pictures of the look to aim for. None is in the game as it is; each is shown here with its prompt. BiRefNet cuts them out. <span class="see">See <a href="2026-11-12-1645-scene-nine.html" title="GLEMT: the idea, and the story before any code">Thu 12 Nov, 16:45</a></span></span></dd></div>
+            <div><dt>3D models</dt><dd><span class="tool">Rodin Gen-2.5</span> <span class="where">Hyper3D, cloud</span><span class="use">The truck, the Director and his rig, the hut, the things in the player's hands, many props: each from one of our own pictures. <span class="see">See <a href="2026-11-13-0615-morning.html" title="The morning after: what one night of eight agents made, in plain words">Fri 13 Nov, 06:15</a>, <a href="2026-11-13-0430-floor-cleared.html" title="Half past four: day one is cleared on foot, the ground comes back, and the Director gets his face">Fri 13 Nov, 04:30</a>, <a href="2026-11-13-0230-first-package.html" title="Half past two: the first packaged game, ray tracing measured, and day one cut in half">Fri 13 Nov, 02:30</a></span></span></dd></div>
+            <div><dt>Voices</dt><dd><span class="tool">Ming-3.0 TTS</span> <span class="where">open voice model, on this PC</span><span class="use">Designed voices, not copied from anyone: the owner who talks to himself, the Director through a megaphone, the agent on the answering machine. <span class="see">See <a href="2026-11-12-2150-four-days.html" title="The game finds its shape: four days to empty a dead director's house">Thu 12 Nov, 21:50</a></span></span></dd></div>
+            <div><dt>Music</dt><dd><span class="tool">ACE-Step 1.5</span> <span class="where">open music model, on this PC</span><span class="use">Low drones, the chase, the stings. <span class="see">See <a href="2026-11-12-2150-four-days.html" title="The game finds its shape: four days to empty a dead director's house">Thu 12 Nov, 21:50</a></span></span></dd></div>
+            <div><dt>Sound effects</dt><dd><span class="tool">Our own synthesis</span> <span class="where">Python with NumPy and SciPy</span><span class="use">Every effect computed from noise, tones and filters: footsteps, fire, the clapperboard, the heartbeat. No recorded samples. <span class="see">See <a href="2026-11-12-2150-four-days.html" title="The game finds its shape: four days to empty a dead director's house">Thu 12 Nov, 21:50</a></span></span></dd></div>
+            <div><dt>Light and fire</dt><dd><span class="tool">Our own code</span> <span class="where">in the engine</span><span class="use">The day's clock from morning to night, the flames, sparks and smoke. No ready-made effect. <span class="see">See <a href="2026-11-12-2150-four-days.html" title="The game finds its shape: four days to empty a dead director's house">Thu 12 Nov, 21:50</a></span></span></dd></div>
+            <div><dt>The engine</dt><dd><span class="tool">Unreal Engine 5.9</span> <span class="where">MegaJam Preview, built from source</span><span class="use">Everything runs in it; its own vegetation, sky and basic shapes are used and declared. <span class="see">See <a href="2026-11-13-0615-morning.html" title="The morning after: what one night of eight agents made, in plain words">Fri 13 Nov, 06:15</a>, <a href="2026-11-13-0430-floor-cleared.html" title="Half past four: day one is cleared on foot, the ground comes back, and the Director gets his face">Fri 13 Nov, 04:30</a>, <a href="2026-11-13-0230-first-package.html" title="Half past two: the first packaged game, ray tracing measured, and day one cut in half">Fri 13 Nov, 02:30</a></span></span></dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="sourced-grid">
+        <div>
+          <h3 class="minor">From outside: what was not made here</h3>
+          <ul class="sourced">
+            <li><strong>Poly Haven</strong> surfaces (floors, plaster, wallpaper, slate, bark, forest ground) and furniture and forest models, fetched on 12 November. <span class="licence">CC0</span></li>
+            <li><strong>Unreal Engine's own content</strong> basic shapes, sky and fog, the procedural vegetation sample trees and shrubs, engine fonts. <span class="licence">engine licence</span></li>
+            <li><strong>Rodin's animation catalogue</strong> the stock walk, idle and run clips that Rodin's rigging puts on the Director's skeleton; our code blends and bends them. <span class="licence">Hyper3D's terms</span></li>
+            <li><strong>NVIDIA DLSS</strong> the upscaling plugin, named in words only (no logos). <span class="licence">NVIDIA's licence</span></li>
+            <li><strong>This site's fonts</strong> Big Shoulders Display and Source Serif 4, not in the game. <span class="licence">SIL Open Font Licence</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="minor">Made before the jam</h3>
+          <p class="before">The engine build, the AI tools and their settings, the build and packaging scripts and this site's generator were prepared before the jam began, as the rules allow, and are declared with the entry. No game content (no code of the game, picture, model, sound or level) was made before Thursday 12 November, 06:00 Danish time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section numbers" id="numbers" aria-labelledby="numbers-title">
+    <div class="wrap">
+      <h2 class="section-title" id="numbers-title">By the numbers <span class="counted">counted Fri 13 Nov, 05:59</span></h2>
+      <ul class="figures">
+        <li><span class="n">23,547</span> <span class="what">lines of C++ game code</span></li>
+        <li><span class="n">254</span> <span class="what">Rodin jobs (3D models and rigs)</span></li>
+        <li><span class="n">221</span> <span class="what">kinds of 3D model in the game</span></li>
+        <li><span class="n">1,012</span> <span class="what">pictures from the image model</span></li>
+        <li><span class="n">359</span> <span class="what">sound effects, all synthesised</span></li>
+        <li><span class="n">169</span> <span class="what">spoken lines</span></li>
+        <li><span class="n">14</span> <span class="what">pieces of music</span></li>
+        <li><span class="n">86</span> <span class="what">Poly Haven assets (CC0)</span></li>
+        <li><span class="n">8</span> <span class="what">agents working at once</span></li>
+        <li><span class="n">50</span> <span class="what">commits to the game's repository</span></li>
+      </ul>
+      <details class="how">
+        <summary>How each number was counted</summary>
+        <dl>
+          <div><dt>23,547 lines of C++ game code</dt><dd>Non-empty lines in the 55 source files of the game (game/Source), all written by the coding agents during the jam.</dd></div>
+          <div><dt>254 Rodin jobs (3D models and rigs)</dt><dd>Distinct generation and rigging ids in the job records of the asset folders and the agents' notes, from 12 November 15:50 on. Not every job became a model in the game; several were tries that failed and were sent again.</dd></div>
+          <div><dt>221 kinds of 3D model in the game</dt><dd>Model folders in the game's content (Content/Take/Models): Rodin models and Poly Haven models together.</dd></div>
+          <div><dt>1,012 pictures from the image model</dt><dd>Picture files the image model wrote for this game (one file a seed) from 12 November 15:50 on. Cut-outs are left out. Most were references for 3D models; none is in the game as it is.</dd></div>
+          <div><dt>359 sound effects, all synthesised</dt><dd>Sound effect files imported into the game (Content/Take/Audio/SFX), each made by our own synthesis code; one kind of sound often has several variants.</dd></div>
+          <div><dt>169 spoken lines</dt><dd>Lines in the game's list of spoken lines (Content/Data/Lines.json); 224 voice files are in the game.</dd></div>
+          <div><dt>14 pieces of music</dt><dd>Music files in the game (Content/Take/Audio/Music), made with the local music model.</dd></div>
+          <div><dt>86 Poly Haven assets (CC0)</dt><dd>Poly Haven models and surfaces in the project's CC0 lock whose files were all fetched during the jam. Not all of them are used.</dd></div>
+          <div><dt>8 agents working at once</dt><dd>Lanes marked running or started in the night's lane table at the time of counting.</dd></div>
+          <div><dt>50 commits to the game's repository</dt><dd>Commits in the game's own (private) repository; its history shows when each thing was made.</dd></div>
+        </dl>
+      </details>
+    </div>
+  </section>
+  <section class="section failures" id="failures" aria-labelledby="failures-title">
+    <div class="wrap">
+      <h2 class="section-title" id="failures-title">What went wrong <span class="count">40</span></h2>
+      <p class="section-note">A glass box shows the cracks too. Every failure the log tells, newest first, each with what was done about it.</p>
+      <ol class="failure-list">
+        <li><a href="2026-11-13-0615-morning.html#failed-1"><span class="when">Fri 13 Nov, 06:15</span> <span class="what">The night is not dark enough with the flashlight on</span></a></li>
+        <li><a href="2026-11-13-0615-morning.html#failed-2"><span class="when">Fri 13 Nov, 06:15</span> <span class="what">The first room is bare</span></a></li>
+        <li><a href="2026-11-13-0615-morning.html#failed-3"><span class="when">Fri 13 Nov, 06:15</span> <span class="what">The zip is 1.95 GB</span></a></li>
+        <li><a href="2026-11-13-0615-morning.html#failed-4"><span class="when">Fri 13 Nov, 06:15</span> <span class="what">Days two to four have not been played</span></a></li>
+        <li><a href="2026-11-13-0615-morning.html#failed-5"><span class="when">Fri 13 Nov, 06:15</span> <span class="what">Smaller faults</span></a></li>
+        <li><a href="2026-11-13-0430-floor-cleared.html#failed-1"><span class="when">Fri 13 Nov, 04:30</span> <span class="what">An hour earlier the same test got nowhere</span></a></li>
+        <li><a href="2026-11-13-0430-floor-cleared.html#failed-2"><span class="when">Fri 13 Nov, 04:30</span> <span class="what">By a strong light he still turns white</span></a></li>
+        <li><a href="2026-11-13-0430-floor-cleared.html#failed-3"><span class="when">Fri 13 Nov, 04:30</span> <span class="what">Three minutes of compiling at every start</span></a></li>
+        <li><a href="2026-11-13-0430-floor-cleared.html#failed-4"><span class="when">Fri 13 Nov, 04:30</span> <span class="what">A lock held for forty minutes</span></a></li>
+        <li><a href="2026-11-13-0430-floor-cleared.html#failed-5"><span class="when">Fri 13 Nov, 04:30</span> <span class="what">Fixes that no picture has seen</span></a></li>
+      </ol>
+      <details class="more-failures">
+        <summary>The 30 older ones</summary>
+        <ol class="failure-list" start="11">
+        <li><a href="2026-11-13-0230-first-package.html#failed-1"><span class="when">Fri 13 Nov, 02:30</span> <span class="what">The forest's shrubs and leafy trees are missing in the packaged game</span></a></li>
+        <li><a href="2026-11-13-0230-first-package.html#failed-2"><span class="when">Fri 13 Nov, 02:30</span> <span class="what">The zip is 1.56 GB</span></a></li>
+        <li><a href="2026-11-13-0230-first-package.html#failed-3"><span class="when">Fri 13 Nov, 02:30</span> <span class="what">The frame rate fell with the first ray-traced build</span></a></li>
+        <li><a href="2026-11-13-0230-first-package.html#failed-4"><span class="when">Fri 13 Nov, 02:30</span> <span class="what">Two new faults in the newest pictures</span></a></li>
+        <li><a href="2026-11-13-0030-midnight.html#failed-1"><span class="when">Fri 13 Nov, 00:30</span> <span class="what">The automaton said &quot;Light off&quot; and left its light on</span></a></li>
+        <li><a href="2026-11-13-0030-midnight.html#failed-2"><span class="when">Fri 13 Nov, 00:30</span> <span class="what">Day one is too long</span></a></li>
+        <li><a href="2026-11-13-0030-midnight.html#failed-3"><span class="when">Fri 13 Nov, 00:30</span> <span class="what">Still the furthest from the target</span></a></li>
+        <li><a href="2026-11-13-0030-midnight.html#failed-4"><span class="when">Fri 13 Nov, 00:30</span> <span class="what">The second figure came into the game white</span></a></li>
+        <li><a href="2026-11-13-0030-midnight.html#failed-5"><span class="when">Fri 13 Nov, 00:30</span> <span class="what">Our own screenshots made the stutter worse than it is</span></a></li>
+        <li><a href="2026-11-13-0030-midnight.html#failed-6"><span class="when">Fri 13 Nov, 00:30</span> <span class="what">Two lost test runs, and a broken build</span></a></li>
+        <li><a href="2026-11-12-2255-first-night.html#failed-1"><span class="when">Thu 12 Nov, 22:55</span> <span class="what">The last entry called the house a white box, but its picture was already the new house</span></a></li>
+        <li><a href="2026-11-12-2255-first-night.html#failed-2"><span class="when">Thu 12 Nov, 22:55</span> <span class="what">The ground in front of the house reads as sand with black tufts</span></a></li>
+        <li><a href="2026-11-12-2255-first-night.html#failed-3"><span class="when">Thu 12 Nov, 22:55</span> <span class="what">The engine quit at once when the new trees were switched on</span></a></li>
+        <li><a href="2026-11-12-2255-first-night.html#failed-4"><span class="when">Thu 12 Nov, 22:55</span> <span class="what">The new forest floor repeats one small plant everywhere</span></a></li>
+        <li><a href="2026-11-12-2255-first-night.html#failed-5"><span class="when">Thu 12 Nov, 22:55</span> <span class="what">Two forest models were not good enough to use</span></a></li>
+        <li><a href="2026-11-12-2255-first-night.html#failed-6"><span class="when">Thu 12 Nov, 22:55</span> <span class="what">The smeared picture made a mannequin</span></a></li>
+        <li><a href="2026-11-12-2255-first-night.html#failed-7"><span class="when">Thu 12 Nov, 22:55</span> <span class="what">Five things wrong with him on the way here</span></a></li>
+        <li><a href="2026-11-12-2255-first-night.html#failed-8"><span class="when">Thu 12 Nov, 22:55</span> <span class="what">On real feet, day one cannot be finished, and the night cannot be survived</span></a></li>
+        <li><a href="2026-11-12-2255-first-night.html#failed-9"><span class="when">Thu 12 Nov, 22:55</span> <span class="what">The game stutters</span></a></li>
+        <li><a href="2026-11-12-2150-four-days.html#failed-1"><span class="when">Thu 12 Nov, 21:50</span> <span class="what">The first build was built on a wrong reading</span></a></li>
+        <li><a href="2026-11-12-2150-four-days.html#failed-2"><span class="when">Thu 12 Nov, 21:50</span> <span class="what">Five of six agents stopped in mid-work</span></a></li>
+        <li><a href="2026-11-12-2150-four-days.html#failed-3"><span class="when">Thu 12 Nov, 21:50</span> <span class="what">The PC crashed during a graphics driver update</span></a></li>
+        <li><a href="2026-11-12-2150-four-days.html#failed-4"><span class="when">Thu 12 Nov, 21:50</span> <span class="what">The forest is not as real as it should be</span></a></li>
+        <li><a href="2026-11-12-2150-four-days.html#failed-5"><span class="when">Thu 12 Nov, 21:50</span> <span class="what">The hut came out as a firewood rack</span></a></li>
+        <li><a href="2026-11-12-2150-four-days.html#failed-6"><span class="when">Thu 12 Nov, 21:50</span> <span class="what">From the gate, the mansion is a white box</span></a></li>
+        <li><a href="2026-11-12-2150-four-days.html#failed-7"><span class="when">Thu 12 Nov, 21:50</span> <span class="what">Four faults in one picture</span></a></li>
+        <li><a href="2026-11-12-1645-scene-nine.html#failed-1"><span class="when">Thu 12 Nov, 16:45</span> <span class="what">The image model will not turn a chosen front view into a side and a back view</span></a></li>
+        <li><a href="2026-11-12-1645-scene-nine.html#failed-2"><span class="when">Thu 12 Nov, 16:45</span> <span class="what">&quot;A painted face&quot; came out as a real face</span></a></li>
+        <li><a href="2026-11-12-1645-scene-nine.html#failed-3"><span class="when">Thu 12 Nov, 16:45</span> <span class="what">A blank cloth tag became a pocket</span></a></li>
+        <li><a href="2026-11-12-1645-scene-nine.html#failed-4"><span class="when">Thu 12 Nov, 16:45</span> <span class="what">The first story draft did not fit</span></a></li>
+        </ol>
+      </details>
+    </div>
+  </section>
+  <section class="section log" id="log" aria-labelledby="log-title">
+    <div class="wrap">
+      <h2 class="section-title" id="log-title">The log <span class="count">7 entries</span></h2>
+      <div class="log-about"><p>The AI agent writes each entry while the work happens, from the agents' own notes and pictures, not afterwards. Every picture from the image model is shown with the prompt that made it; every failure is marked in red and listed above. Times are Danish time.</p></div>
+      <nav class="day-jump" aria-label="Days"><span>Go to</span> <a href="#day-1">Day 1 <span>Thu 12 Nov</span></a> <a href="#day-2">Day 2 <span>Fri 13 Nov</span></a></nav>
+      <div class="filters" role="group" aria-label="Show only entries about">
+        <button type="button" data-kind="" aria-pressed="true">All</button>
+        <button type="button" data-kind="design" aria-pressed="false">design <span class="n">3</span></button>
+        <button type="button" data-kind="director" aria-pressed="false">the Director <span class="n">4</span></button>
+        <button type="button" data-kind="light" aria-pressed="false">light <span class="n">1</span></button>
+        <button type="button" data-kind="models" aria-pressed="false">3D models <span class="n">3</span></button>
+        <button type="button" data-kind="pictures" aria-pressed="false">pictures <span class="n">1</span></button>
+        <button type="button" data-kind="process" aria-pressed="false">how it is run <span class="n">6</span></button>
+        <button type="button" data-kind="render" aria-pressed="false">render <span class="n">2</span></button>
+        <button type="button" data-kind="sound" aria-pressed="false">sound <span class="n">1</span></button>
+        <button type="button" data-kind="story" aria-pressed="false">story <span class="n">1</span></button>
+        <button type="button" data-kind="test" aria-pressed="false">test <span class="n">5</span></button>
+        <button type="button" data-kind="world" aria-pressed="false">world <span class="n">6</span></button>
+        <button type="button" data-kind="failure" aria-pressed="false" class="failure">failure <span class="n">7</span></button>
+      </div>
+      <div class="day" id="day-1">
+        <h3 class="day-head"><span class="day-name">Day 1</span> <span class="day-date">Thursday 12 November</span></h3>
+        <p class="day-goal">The goal for the day: the story written down, the house standing, and the first day playable from start to bed.</p>
+        <ol class="rows">
+          <li class="row" data-kinds="design story pictures process failure" data-entry-page="2026-11-12-1645-scene-nine">
+            <a class="row-link" href="2026-11-12-1645-scene-nine.html">
+              <span class="row-pic"><img src="media/thumb/2026-11-12-1630-direction.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span>
+              <span class="row-text">
+                <span class="row-time"><time datetime="2026-11-12T16:45">16:45</time> <span class="row-failed">4 failures</span></span>
+                <span class="row-title">GLEMT: the idea, and the story before any code</span>
+                <span class="row-sum">The brief in a handful of messages, the one line that ties it together, and the whole story written down before a line of gameplay code.</span>
+                <span class="row-tags"><span class="tag">design</span> <span class="tag">story</span> <span class="tag">pictures</span> <span class="tag">how it is run</span> <span class="tag failure">failure</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="row" data-kinds="design world light sound models process failure" data-entry-page="2026-11-12-2150-four-days">
+            <a class="row-link" href="2026-11-12-2150-four-days.html">
+              <span class="row-pic"><img src="media/thumb/2026-11-12-2150-bonfire.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span>
+              <span class="row-text">
+                <span class="row-time"><time datetime="2026-11-12T21:50">21:50</time> <span class="row-failed">7 failures</span></span>
+                <span class="row-title">The game finds its shape: four days to empty a dead director's house</span>
+                <span class="row-sum">The developer played the first build, judged it, and described the game he had in mind: a dead director's house to empty over four days, a truck, a bonfire, and an old man who hunts by your light. Six agents built it in…</span>
+                <span class="row-tags"><span class="tag">design</span> <span class="tag">world</span> <span class="tag">light</span> <span class="tag">sound</span> <span class="tag">3D models</span> <span class="tag">how it is run</span> <span class="tag failure">failure</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="row" data-kinds="world models director test process failure" data-entry-page="2026-11-12-2255-first-night">
+            <a class="row-link" href="2026-11-12-2255-first-night.html">
+              <span class="row-pic"><img src="media/thumb/2026-11-12-2255-forest-after.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span>
+              <span class="row-text">
+                <span class="row-time"><time datetime="2026-11-12T22:55">22:55</time> <span class="row-failed">9 failures</span></span>
+                <span class="row-title">The first night: the house gets its face, the forest is replaced, and day one fails on real feet</span>
+                <span class="row-sum">Eight agents work through the night. The white box became a mansion, the forest was rebuilt from the engine's own trees, the hut became a hut, the Director got his look and his walk, and a machine that plays day one on…</span>
+                <span class="row-tags"><span class="tag">world</span> <span class="tag">3D models</span> <span class="tag">the Director</span> <span class="tag">test</span> <span class="tag">how it is run</span> <span class="tag failure">failure</span></span>
+              </span>
+            </a>
+          </li>
+        </ol>
+      </div>
+      <div class="day" id="day-2">
+        <h3 class="day-head"><span class="day-name">Day 2</span> <span class="day-date">Friday 13 November</span></h3>
+        <p class="day-goal">The goal for the day: a finished-looking slice by morning, then day one at the quality bar by night, with him hunting by light.</p>
+        <ol class="rows">
+          <li class="row" data-kinds="test director world render process failure" data-entry-page="2026-11-13-0030-midnight">
+            <a class="row-link" href="2026-11-13-0030-midnight.html">
+              <span class="row-pic"><img src="media/thumb/2026-11-13-0030-fire-window.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span>
+              <span class="row-text">
+                <span class="row-time"><time datetime="2026-11-13T00:30">00:30</time> <span class="row-failed">6 failures</span></span>
+                <span class="row-title">Midnight: a correction, doors that let you through, and a fairer night</span>
+                <span class="row-sum">The hiding that &quot;never worked&quot; was the test's own fault. The doors now let the buyer through, the Director's numbers were set for a first night, and day one on foot got to seven things of fourteen. The house moved…</span>
+                <span class="row-tags"><span class="tag">test</span> <span class="tag">the Director</span> <span class="tag">world</span> <span class="tag">render</span> <span class="tag">how it is run</span> <span class="tag failure">failure</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="row" data-kinds="test render design models world failure" data-entry-page="2026-11-13-0230-first-package">
+            <a class="row-link" href="2026-11-13-0230-first-package.html">
+              <span class="row-pic"><img src="media/thumb/2026-11-13-0230-title.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span>
+              <span class="row-text">
+                <span class="row-time"><time datetime="2026-11-13T02:30">02:30</time> <span class="row-failed">4 failures</span></span>
+                <span class="row-title">Half past two: the first packaged game, ray tracing measured, and day one cut in half</span>
+                <span class="row-sum">The game was packaged and started from its zip on a clean folder for the first time, and the forest's shrubs were missing from it. Ray tracing was measured view by view and costs about what the old lighting did. Day one…</span>
+                <span class="row-tags"><span class="tag">test</span> <span class="tag">render</span> <span class="tag">design</span> <span class="tag">3D models</span> <span class="tag">world</span> <span class="tag failure">failure</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="row" data-kinds="test director world process failure" data-entry-page="2026-11-13-0430-floor-cleared">
+            <a class="row-link" href="2026-11-13-0430-floor-cleared.html">
+              <span class="row-pic"><img src="media/thumb/2026-11-13-0430-instant-camera.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span>
+              <span class="row-text">
+                <span class="row-time"><time datetime="2026-11-13T04:30">04:30</time> <span class="row-failed">5 failures</span></span>
+                <span class="row-title">Half past four: day one is cleared on foot, the ground comes back, and the Director gets his face</span>
+                <span class="row-sum">For the first time the walking automaton cleared day one's floor, in five and a half minutes, without a stall or a death. The white ground is gone, the instant camera is in the game, and the Director's second figure has…</span>
+                <span class="row-tags"><span class="tag">test</span> <span class="tag">the Director</span> <span class="tag">world</span> <span class="tag">how it is run</span> <span class="tag failure">failure</span></span>
+              </span>
+            </a>
+          </li>
+          <li class="row" data-kinds="test world director process failure" data-entry-page="2026-11-13-0615-morning">
+            <a class="row-link" href="2026-11-13-0615-morning.html">
+              <span class="row-pic"><img src="media/thumb/2026-11-13-0615-chair-burning.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span>
+              <span class="row-text">
+                <span class="row-time"><time datetime="2026-11-13T06:15">06:15</time> <span class="row-failed">5 failures</span></span>
+                <span class="row-title">The morning after: what one night of eight agents made, in plain words</span>
+                <span class="row-sum">At half past ten nobody had played day one on foot, and the first try failed. By six it plays from the title to bed and the day's tally, in the packaged game, started from its zip. What is right, what is still wrong…</span>
+                <span class="row-tags"><span class="tag">test</span> <span class="tag">world</span> <span class="tag">the Director</span> <span class="tag">how it is run</span> <span class="tag failure">failure</span></span>
+              </span>
+            </a>
+          </li>
+        </ol>
+      </div>
+      <p class="empty" hidden>No entry carries that tag yet.</p>
+    </div>
+  </section>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <p>GLEMT is a solo entry in the 2026 Epic AI MegaJam (theme: Director's Cut), made between Thursday 12 November and Sunday 15 November 2026, Danish time. Team name: Faluf.</p>
+      <p>This site is built from plain text entries by a small script and holds no tracking, no cookies and no requests to other servers. The game's source is in a private repository; its commit history shows when each thing was made.</p>
+      <p class="foot-links"><a href="index.html">Front page</a> <a href="index.html#log">All entries</a> <a href="pictures.html">All pictures</a> <a href="#top">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>

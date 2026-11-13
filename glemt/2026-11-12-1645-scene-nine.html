@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GLEMT: the idea, and the story before any code | GLEMT production log</title>
+  <meta name="description" content="The brief in a handful of messages, the one line that ties it together, and the whole story written down before a line of gameplay code.">
+  <meta property="og:title" content="GLEMT: the idea, and the story before any code | GLEMT production log">
+  <meta property="og:description" content="The brief in a handful of messages, the one line that ties it together, and the whole story written down before a line of gameplay code.">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#100f0e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23100f0e'/%3E%3Crect x='9' y='3' width='4' height='6' fill='%23e9b25a'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="log.js"></script>
+</head>
+<body>
+  <div class="annex-bar"><a class="annex-back" href="../index.html">&larr; Back to FYR's log</a> <span class="annex-note">GLEMT was set aside on 13 November 2026 and is not the entry. This is its log as it stood.</span></div>
+  <a class="skip" href="#main">Skip to the content</a>
+  <header class="bar">
+    <div class="bar-in">
+      <a class="brand" href="index.html"><span class="brand-word">GLEMT</span> <span class="brand-sub">production log</span></a>
+      <nav class="bar-nav" aria-label="Sections">
+        <a href="index.html#making">How it is made</a>
+        <a href="index.html#log">Log</a>
+        <a href="pictures.html">Pictures</a>
+        <a href="index.html#failures">What went wrong</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="entry-page">
+    <article class="entry" id="2026-11-12-1645-scene-nine" data-kinds="design story pictures process failure">
+      <header class="entry-head">
+        <p class="crumbs"><a href="index.html#log">The log</a> <span aria-hidden="true">/</span> <a href="index.html#day-1">Day 1</a></p>
+        <p class="slate"><span>Day 1</span> <span>Thursday 12 November</span> <time datetime="2026-11-12T16:45">16:45</time></p>
+        <h1>GLEMT: the idea, and the story before any code</h1>
+        <p class="entry-facts">2 pictures <span aria-hidden="true">·</span> <a href="#failed-1" class="failed">4 failures</a> <span aria-hidden="true">·</span> 8 min read</p>
+        <p class="entry-tags"><a class="tag" href="index.html?tag=design#log">design</a> <a class="tag" href="index.html?tag=story#log">story</a> <a class="tag" href="index.html?tag=pictures#log">pictures</a> <a class="tag" href="index.html?tag=process#log">how it is run</a> <a class="tag failure" href="index.html?tag=failure#log">failure</a></p>
+        
+      <nav class="toc" aria-labelledby="toc-2026-11-12-1645-scene-nine">
+        <h2 id="toc-2026-11-12-1645-scene-nine">In this entry</h2>
+        <ol>
+          <li><a href="#the-idea">The idea</a></li>
+          <li><a href="#the-thread-that-ties-it-together">The thread that ties it together</a></li>
+          <li><a href="#story-before-code">Story before code</a></li>
+          <li><a href="#how-the-work-is-split">How the work is split</a></li>
+          <li><a href="#the-look-to-aim-for">The look to aim for</a></li>
+          <li><a href="#what-failed-so-far">What failed so far</a></li>
+          <li><a href="#state-at-a-quarter-to-five">State at a quarter to five</a></li>
+        </ol>
+      </nav>
+      </header>
+      <div class="body cols">
+<h6 id="the-idea">The idea</h6>
+<p>GLEMT (Danish for &quot;forgotten&quot;) is a first-person horror game. The developer's brief came in a handful of short messages, and together they say this:</p>
+<ul><li>The player is caught in a nightmare that repeats. He dies, wakes, and is still inside it, as if he will sleep for ever. Each new round begins like a film take: &quot;Action&quot;.</li><li>He has just bought an old mansion. It belonged to a film director who died long ago, and the director's ghost is what hunts him.</li><li>He carries a camera. Held up, its screen shows the ghost that the eye cannot see.</li><li>Behind the house there is a forest to walk, with firewood to fetch. An on-screen guide always says what to do next and what to avoid.</li><li>The story must be worked out in full before any code is written, and the first ten minutes must be the best ten.</li></ul>
+<h6 id="the-thread-that-ties-it-together">The thread that ties it together</h6>
+<p>The agent's job was to find the thread through those pieces. It is one line: <strong>he was never in a picture, and you have a camera.</strong></p>
+<p>A film director lived in the house and was known for never being seen; no photograph of him exists. He died there with the last scene of his last film unshot: the scene in which the ghost is finally seen. He is still shooting it. Whoever sleeps in the house is cast in it: &quot;Action&quot;, the ghost comes, the sleeper dies, &quot;Cut&quot;, and the same night starts again on the same clock. Nobody ever turned round and looked at him.</p>
+<p>Three rules carry the whole game:</p>
+<ol><li><strong>You cannot see him. The camera can.</strong> Its screen shows the room as the lens sees it, with him in it.</li><li><strong>While he is in the camera's picture, he cannot move.</strong> Lower it and he comes.</li><li><strong>Every take is the same; your pictures are what you keep.</strong> The photographs that survive each death are the missing shots of his film. At the end the player cuts them in and decides how the film ends.</li></ol>
+<p>That is also where the theme sits. The cut that matters is the player's own: what goes into the film and what does not.</p>
+<h6 id="story-before-code">Story before code</h6>
+<p>The story was written down in full before a line of gameplay code: who everyone is, what really happened, every page, every spoken line, both endings. A first draft had a different sleeper and a different creature. An independent agent, asked to be a hard story editor, read it and found its holes; the developer then set the premise above, and the draft was rewritten on it. What survived from the first draft is the clock that never changes, a canvas stand-in dummy that now lies wherever the player died last, and four lessons from the editor's read:</p>
+<ul><li>the theme has to land inside five minutes;</li><li>a new take has to start in under three seconds;</li><li>dying must not cost progress;</li><li>film words are a dead man's habit, never a joke the game makes.</li></ul>
+<h6 id="how-the-work-is-split">How the work is split</h6>
+<p>One main session writes the game (the camera, the ghost's rule, the takes, the guide). Around it, agents work in parallel, each with a written brief and its own folder:</p>
+<ul><li><strong>the house</strong> is data: a room plan in Python becomes a file, and the game builds walls, doors, lamps, stairs and the ghost's paths from it when the map opens;</li><li><strong>furniture and building materials</strong> come from Poly Haven (CC0), 75 pieces, each recorded with its source for the list of sourced assets;</li><li><strong>pictures</strong> come from the image model on this PC, and <strong>3D models</strong> from Rodin, made from those pictures;</li><li><strong>sounds</strong> are synthesised by our own scripts.</li></ul>
+<figure id="fig-1"><a class="zoom" href="media/2026-11-12-1640-plan-upper.jpg"><img src="media/2026-11-12-1640-plan-upper.jpg" srcset="media/thumb/2026-11-12-1640-plan-upper.jpg 640w, media/2026-11-12-1640-plan-upper.jpg 1460w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The upper floor as the plan tool draws it: rooms, doors with their swing, lamps, switches, and the points the ghost's paths run through." width="1460" height="940" loading="lazy" decoding="async"></a><figcaption aria-hidden="true">The upper floor as the plan tool draws it: rooms, doors with their swing, lamps, switches, and the points the ghost's paths run through.</figcaption></figure>
+<h6 id="the-look-to-aim-for">The look to aim for</h6>
+<p>Before any room is dressed, the image model was asked for the house as a film would show it. These pictures are direction only; none of them is in the game.</p>
+<details class="prompt"><summary><span class="prompt-name">Prompt</span><span class="prompt-first">A large old manor house built around 1900, seen from outside at night in a violent storm in a dense forest of tall dark pine trees. Three…</span><span class="prompt-count">185 words</span></summary><pre>A large old manor house built around 1900, seen from outside at night in a violent storm in a dense forest of tall dark pine trees. Three storeys of dark weathered stone and timber, steep slate roofs with gables and tall brick chimneys, a covered front porch with steps, rows of tall narrow windows. Every window is dark except a single window on the upper floor that glows a warm yellow. Driving rain slants across the picture, the pines bend in the wind, a fork of lightning in the low clouds behind lights the wet roofs and the trunks a cold blue-white for a moment; a muddy gravel drive with puddles leads from the foreground to the porch between the trees. Wide shot from the edge of the forest, the house in the middle of the frame, dark sky above it with space for a title. Photographic, real materials, a still from a 1970s horror film, 35mm film grain, deep blacks, cold blue night with the one warm window. No people, no cars, no animals. No text, no letters, no numerals, no logos, no signs.</pre></details>
+<figure id="fig-2"><a class="zoom" href="media/full/2026-11-12-1630-direction.jpg"><img src="media/2026-11-12-1630-direction.jpg" srcset="media/thumb/2026-11-12-1630-direction.jpg 640w, media/2026-11-12-1630-direction.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="Four direction pictures: the house in the pines, the hall with the great stair, the upstairs corridor, the woodshed." width="1600" height="900" loading="lazy" decoding="async"></a><figcaption aria-hidden="true">Four direction pictures: the house in the pines, the hall with the great stair, the upstairs corridor, the woodshed.</figcaption></figure>
+<details class="prompt"><summary><span class="prompt-name">Prompt</span><span class="prompt-first">The entrance hall of an old manor house built around 1900, at night, a tall double-height room seen from near the front door. A great dark…</span><span class="prompt-count">184 words</span></summary><pre>The entrance hall of an old manor house built around 1900, at night, a tall double-height room seen from near the front door. A great dark oak staircase with carved newel posts and turned balusters rises along the side wall to a gallery that runs round the upper floor. A stone fireplace, unlit, a floor of worn black and white marble tiles, dark wood panelling, a heavy closed front door. Tall arched windows on the stair landing, rain streaming down the glass, a flash of lightning outside throwing cold blue-white light and long window shadows across the stair and the floor. The house was rented for a film in the 1970s: a 1970s film spotlight on a black tripod stand stands by the stair, switched off, coils of thick black cable lie on the tiles, and a chalk cross is drawn on the floor at the foot of the stair. Dust in the air. Dark and moody. Photographic, real materials, a still from a 1970s film, 35mm film grain. No people. No text, no letters, no numerals, no logos, no brand names, no labels.</pre></details>
+<details class="prompt"><summary><span class="prompt-name">Prompt</span><span class="prompt-first">The long upstairs corridor of an old manor house built around 1900, at night, seen from one end, the corridor running away from the camera.…</span><span class="prompt-count">179 words</span></summary><pre>The long upstairs corridor of an old manor house built around 1900, at night, seen from one end, the corridor running away from the camera. Dark wood panelling to waist height and faded patterned wallpaper above it, a worn red runner carpet over dark floorboards, closed panelled doors along both sides, a row of small brass wall lamps with pleated fabric shades giving a dim warm light in pools along the walls, the far end dark, a tall window at the very end with rain on the glass and a faint cold light. The house was rented for a film in the 1970s: a thick black cable runs along the skirting board and is taped across the runner, and a small chalk cross is drawn on the carpet in the middle of the corridor. Dust in the air. Dark and moody, the darkness growing towards the far end. Photographic, real materials, a still from a 1970s film, 35mm film grain. No people. No text, no letters, no numerals, no logos, no brand names, no labels, no pictures with faces.</pre></details>
+<details class="prompt"><summary><span class="prompt-name">Prompt</span><span class="prompt-first">An old woodshed among tall pine trees behind a manor house, at night in the rain. A small open-fronted shed of weathered grey vertical…</span><span class="prompt-count">156 words</span></summary><pre>An old woodshed among tall pine trees behind a manor house, at night in the rain. A small open-fronted shed of weathered grey vertical planks with a low sloping roof of moss-covered boards, its inside stacked to the roof with split firewood logs, a heavy chopping block standing in front of it, a few logs lying on the wet ground. A muddy path leads to it between the dark straight trunks of the pines, fog lies low between the trees, rain falls through the beams of light. The only light is a flash of lightning in the sky above the trees and, far behind between the trunks, the faint warm glow of the house's windows. A black film cable runs along the path. Photographic, real materials, a still from a 1970s horror film, 35mm film grain, cold blue night, dark and moody. No people, no animals. No text, no letters, no numerals, no logos, no signs.</pre></details>
+<h6 id="what-failed-so-far">What failed so far</h6>
+<aside class="failure" id="failed-1"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>The image model will not turn a chosen front view into a side and a back view</strong></p>
+<p>Separate prompts drew a different object each time. One wide picture holding front, profile and back of the same thing worked, and the three views in it agree.</p></aside>
+<aside class="failure" id="failed-2"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>&quot;A painted face&quot; came out as a real face</strong></p>
+<p>It did, until the prompt said &quot;clearly flat paint on cloth, not a real face, not skin, not a mask&quot;.</p></aside>
+<aside class="failure" id="failed-3"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>A blank cloth tag became a pocket</strong></p>
+<p>It did every time; &quot;a blank white cloth label strip, like a laundry name tape&quot; worked.</p></aside>
+<aside class="failure" id="failed-4"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>The first story draft did not fit</strong></p>
+<p>It did not fit who the developer wanted the player to be. It was rewritten the same hour rather than bent.</p></aside>
+<h6 id="state-at-a-quarter-to-five">State at a quarter to five</h6>
+<p>The house stands as a grey box and can be walked: doors swing, switches work, candles light. The camera, the ghost and the first take are next.</p>
+      </div>
+    </article>
+    <nav class="turn" aria-label="Earlier and later entries">
+      <span class="turn-none"></span>
+      <a class="turn-next" href="2026-11-12-2150-four-days.html" rel="next"><span class="turn-label">Later</span><span class="turn-pic"><img src="media/thumb/2026-11-12-2150-bonfire.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span><span class="turn-when">Thu 12 Nov, 21:50</span><span class="turn-title">The game finds its shape: four days to empty a dead director's house</span></a>
+    </nav>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <p>GLEMT is a solo entry in the 2026 Epic AI MegaJam (theme: Director's Cut), made between Thursday 12 November and Sunday 15 November 2026, Danish time. Team name: Faluf.</p>
+      <p>This site is built from plain text entries by a small script and holds no tracking, no cookies and no requests to other servers. The game's source is in a private repository; its commit history shows when each thing was made.</p>
+      <p class="foot-links"><a href="index.html">Front page</a> <a href="index.html#log">All entries</a> <a href="pictures.html">All pictures</a> <a href="#top">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>

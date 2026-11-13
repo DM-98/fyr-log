@@ -27,6 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (/^day-/.test(asked) && !document.getElementById(asked)) { location.replace(`log.html#${asked}`); return; }
   }
 
+  // ---- 0. the torch on the name: a circle of light under the pointer shows the line above the title
+  const lit = $('.hero-name.has-reveal');
+  if (lit) {
+    lit.addEventListener('pointermove', (event) => {
+      if (event.pointerType === 'touch') return;
+      const box = lit.getBoundingClientRect();
+      lit.style.setProperty('--mx', `${event.clientX - box.left}px`);
+      lit.style.setProperty('--my', `${event.clientY - box.top}px`);
+      lit.style.setProperty('--r', '6.5rem');
+    });
+    lit.addEventListener('pointerleave', () => lit.style.setProperty('--r', '0px'));
+    // no pointer to shine with: a tap on the name shows the line
+    lit.addEventListener('click', (event) => { if (!event.target.closest('a')) lit.classList.toggle('lit'); });
+  }
+
   // ---- 1. show only one kind
   const filters = $('.filters');
   if (filters) {

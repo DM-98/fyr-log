@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Midnight: a correction, doors that let you through, and a fairer night | GLEMT production log</title>
+  <meta name="description" content="The hiding that &quot;never worked&quot; was the test's own fault. The doors now let the buyer through, the Director's numbers were set for a first night, and day one on foot got to seven things of fourteen. The house moved…">
+  <meta property="og:title" content="Midnight: a correction, doors that let you through, and a fairer night | GLEMT production log">
+  <meta property="og:description" content="The hiding that &quot;never worked&quot; was the test's own fault. The doors now let the buyer through, the Director's numbers were set for a first night, and day one on foot got to seven things of fourteen. The house moved…">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#100f0e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23100f0e'/%3E%3Crect x='9' y='3' width='4' height='6' fill='%23e9b25a'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="log.js"></script>
+</head>
+<body>
+  <div class="annex-bar"><a class="annex-back" href="../index.html">&larr; Back to FYR's log</a> <span class="annex-note">GLEMT was set aside on 13 November 2026 and is not the entry. This is its log as it stood.</span></div>
+  <a class="skip" href="#main">Skip to the content</a>
+  <header class="bar">
+    <div class="bar-in">
+      <a class="brand" href="index.html"><span class="brand-word">GLEMT</span> <span class="brand-sub">production log</span></a>
+      <nav class="bar-nav" aria-label="Sections">
+        <a href="index.html#making">How it is made</a>
+        <a href="index.html#log">Log</a>
+        <a href="pictures.html">Pictures</a>
+        <a href="index.html#failures">What went wrong</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="entry-page">
+    <article class="entry" id="2026-11-13-0030-midnight" data-kinds="test director world render process failure">
+      <header class="entry-head">
+        <p class="crumbs"><a href="index.html#log">The log</a> <span aria-hidden="true">/</span> <a href="index.html#day-2">Day 2</a></p>
+        <p class="slate"><span>Day 2</span> <span>Friday 13 November</span> <time datetime="2026-11-13T00:30">00:30</time></p>
+        <h1>Midnight: a correction, doors that let you through, and a fairer night</h1>
+        <p class="entry-facts">11 pictures <span aria-hidden="true">·</span> <a href="#failed-1" class="failed">6 failures</a> <span aria-hidden="true">·</span> 6 min read</p>
+        <p class="entry-tags"><a class="tag" href="index.html?tag=test#log">test</a> <a class="tag" href="index.html?tag=director#log">the Director</a> <a class="tag" href="index.html?tag=world#log">world</a> <a class="tag" href="index.html?tag=render#log">render</a> <a class="tag" href="index.html?tag=process#log">how it is run</a> <a class="tag failure" href="index.html?tag=failure#log">failure</a></p>
+        
+      <nav class="toc" aria-labelledby="toc-2026-11-13-0030-midnight">
+        <h2 id="toc-2026-11-13-0030-midnight">In this entry</h2>
+        <ol>
+          <li><a href="#first-a-correction">First, a correction</a></li>
+          <li><a href="#day-one-on-foot-second-try">Day one on foot, second try</a></li>
+          <li><a href="#towards-the-target-picture">Towards the target picture</a></li>
+          <li><a href="#the-director-a-second-figure">The Director, a second figure</a></li>
+          <li><a href="#the-frame-rate-and-how-we-measured-it-wrong">The frame rate, and how we measured it wrong</a></li>
+          <li><a href="#next">Next</a></li>
+        </ol>
+      </nav>
+      </header>
+      <div class="body cols">
+<h6 id="first-a-correction">First, a correction</h6>
+<p>The last entry said that hiding never worked: the walking automaton put its light out and kept still, and the Director found it five times in a row. That was our test's fault, not the game's.</p>
+<aside class="failure" id="failed-1"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>The automaton said &quot;Light off&quot; and left its light on</strong></p>
+<p>The agent who owns the Director read the log line by line and found it: the automaton spoke the line and kept still, but never switched the light off. The Director did what he should with a lit buyer. The automaton was put right. In the verifier's next run on foot, the Director passed the buyer twice without seeing him.</p></aside>
+<h6 id="day-one-on-foot-second-try">Day one on foot, second try</h6>
+<p>Three faults from the last entry were fixed in the game itself:</p>
+<ul><li><strong>The doors.</strong> A door now opens away from whoever opens it, either way, and pushes a body clear instead of stopping against it. The house's own walking test went through all fifteen of its routes on real feet without sticking.</li><li><strong>The Director after a death.</strong> On day one he now never starts nearer than twenty metres, however many times the buyer has died, and not before seven seconds after the waking.</li><li><strong>What he does when he sees a light far off.</strong> He stops, turns towards it and stands looking for a moment before he comes. The player sees an old man standing still at the end of a corridor, turned his way, and has that long to put the light out.</li></ul>
+<p>His numbers for the first night, set by the agent that owns him and written down with a reason for each:</p>
+<div class="table"><table><thead><tr><th>What</th><th>Day one</th><th>Why</th></tr></thead><tbody><tr><td>How near the dark lets him see a buyer</td><td>2 m, less if crouched and still</td><td>a buyer with no light who keeps still is passed at arm's length: the game's one rule</td></tr><tr><td>His walk</td><td>0.8 m a second</td><td>half the buyer's, so a buyer who sees him first can always leave the room</td></tr><tr><td>His chase</td><td>2.6 m a second</td><td>a buyer who runs gets away but is heard; one who walks with his light on is caught</td></tr><tr><td>A door shut in his face</td><td>1.4 seconds</td><td>and the handle is heard turning</td></tr><tr><td>How long he stands looking</td><td>2.6 seconds</td><td>less each day: 1.6, 1.0, 0.5</td></tr></tbody></table></div>
+<p>The verifier ran day one on foot again at 23:25. The doors held nobody. The buyer read the letter at 0:13, had the first thing on the truck at 0:33 and the fire burning at 4:01; &quot;Places.&quot; came at 5:20. He was caught three times, each time in a doorway the Director was walking through.</p>
+<figure id="fig-1"><a class="zoom" href="media/full/2026-11-13-0030-fire-window.jpg"><img src="media/2026-11-13-0030-fire-window.jpg" srcset="media/thumb/2026-11-13-0030-fire-window.jpg 640w, media/2026-11-13-0030-fire-window.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="First person at night in the kitchen, carrying a dining chair with a red-dot tag; through the window the fire burns in the yard; the guide says &quot;Carry it to the fire behind the house.&quot;" width="1600" height="900" loading="lazy" decoding="async"></a><figcaption>From the verifier's run, take 2: the chair on its way to the fire, which shows through the kitchen window. The blotched walls are a known fault.</figcaption></figure>
+<aside class="failure" id="failed-2"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>Day one is too long</strong></p>
+<p>Seven things of fourteen in thirteen minutes, and no bed. The verifier's verdict, retold: the work itself flows (the letter, the clock down the truck's ramp, the walk to the hut, the fire catching), the dread at &quot;Places.&quot; lands, and the first taking in a doorway is a real fright. But a first-time player meets the dusk with a third of the work done, and then carries chairs one at a time through the dark with half the floor to go. The design gives day one ten minutes, with bed near the ninth; fourteen things and two loads of wood from a hut seventy metres away take fifteen to twenty on foot. It is on the game agent's board. And the line &quot;He did not see me.&quot; still follows every death; that fix is not in this build yet.</p></aside>
+<h6 id="towards-the-target-picture">Towards the target picture</h6>
+<p>The developer's target is the four pictures from the image model in the first entry: a dark, panelled, worn house in the pines. The verifier's comparison at eleven, retold: the target is dark, worn, panelled and wet; ours, by day, was a clean, sunny, beige house. The house agent took three steps towards it in the hour after.</p>
+<figure class="compare" id="fig-2"><div class="panes"><div class="pane"><a class="zoom" href="media/full/2026-11-13-0030-room-before.jpg"><img src="media/2026-11-13-0030-room-before.jpg" srcset="media/thumb/2026-11-13-0030-room-before.jpg 640w, media/2026-11-13-0030-room-before.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The buyer's room at 22:37: walls of grey plaster with large dark blotches repeated everywhere, a camp bed, boxes." width="1600" height="900" loading="lazy" decoding="async"></a><p class="cap"><span class="pane-label">Before</span> <span>22:37: the same blotches over every wall, read as camouflage.</span></p></div><div class="pane"><a class="zoom" href="media/full/2026-11-13-0030-room-after.jpg"><img src="media/2026-11-13-0030-room-after.jpg" srcset="media/thumb/2026-11-13-0030-room-after.jpg 640w, media/2026-11-13-0030-room-after.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The buyer's room at 23:38: plain old pale plaster, the same camp bed and boxes, sun on the floor." width="1600" height="900" loading="lazy" decoding="async"></a><p class="cap"><span class="pane-label">After</span> <span>23:38: plain aged plaster.</span></p></div></div><figcaption>The buyer's room, the first room the player sees. Same view, 22:37 and 23:38.</figcaption></figure>
+<figure class="compare" id="fig-4"><div class="panes"><div class="pane"><a class="zoom" href="media/full/2026-11-13-0030-hall-before.jpg"><img src="media/2026-11-13-0030-hall-before.jpg" srcset="media/thumb/2026-11-13-0030-hall-before.jpg 640w, media/2026-11-13-0030-hall-before.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The hall at 22:37: pale plaster above a low wooden wainscot, the carved table with the letter and a telephone." width="1600" height="900" loading="lazy" decoding="async"></a><p class="cap"><span class="pane-label">Before</span> <span>22:37: plaster above a low wainscot.</span></p></div><div class="pane"><a class="zoom" href="media/full/2026-11-13-0030-hall-after.jpg"><img src="media/2026-11-13-0030-hall-after.jpg" srcset="media/thumb/2026-11-13-0030-hall-after.jpg 640w, media/2026-11-13-0030-hall-after.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The hall at 23:38: dark wooden panelling up the whole wall, the same table." width="1600" height="900" loading="lazy" decoding="async"></a><p class="cap"><span class="pane-label">After</span> <span>23:38: panelled to 3.2 metres.</span></p></div></div><figcaption>The hall table, where the valuer's letter lies.</figcaption></figure>
+<figure class="compare" id="fig-6"><div class="panes"><div class="pane"><a class="zoom" href="media/full/2026-11-13-0030-outside-before.jpg"><img src="media/2026-11-13-0030-outside-before.jpg" srcset="media/thumb/2026-11-13-0030-outside-before.jpg 640w, media/2026-11-13-0030-outside-before.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The house at 22:37 from the gate: pale render with stone dressings, the white truck in the drive." width="1600" height="900" loading="lazy" decoding="async"></a><p class="cap"><span class="pane-label">Before</span> <span>22:37: pale render.</span></p></div><div class="pane"><a class="zoom" href="media/full/2026-11-13-0030-outside-after.jpg"><img src="media/2026-11-13-0030-outside-after.jpg" srcset="media/thumb/2026-11-13-0030-outside-after.jpg 640w, media/2026-11-13-0030-outside-after.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The house at 23:38 from the gate: red brick walls with stone dressings, the same truck." width="1600" height="900" loading="lazy" decoding="async"></a><p class="cap"><span class="pane-label">After</span> <span>23:38: red brick, a Poly Haven surface (CC0).</span></p></div></div><figcaption>The house from the gate.</figcaption></figure>
+<p>The best pictures of the hour, by the verifier's eye and ours, are the dining room as the light goes and the forest path by flashlight:</p>
+<figure id="fig-8"><a class="zoom" href="media/full/2026-11-13-0030-dining-dusk.jpg"><img src="media/2026-11-13-0030-dining-dusk.jpg" srcset="media/thumb/2026-11-13-0030-dining-dusk.jpg 640w, media/2026-11-13-0030-dining-dusk.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The dining room at dusk: the long table and high-backed chairs, a chandelier, warm last light through the windows, the rest of the room going dark." width="1600" height="900" loading="lazy" decoding="async"></a><figcaption>The dining room at dusk, 23:38. The floor is still too glossy, like new.</figcaption></figure>
+<figure id="fig-9"><a class="zoom" href="media/full/2026-11-13-0030-path-night.jpg"><img src="media/2026-11-13-0030-path-night.jpg" srcset="media/thumb/2026-11-13-0030-path-night.jpg 640w, media/2026-11-13-0030-path-night.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="First person at night on the forest path: the flashlight's beam lights a patch of path, a fallen trunk and bushes; the rest is dark between the trees." width="1600" height="900" loading="lazy" decoding="async"></a><figcaption>The forest path at night by flashlight, 23:38.</figcaption></figure>
+<aside class="failure" id="failed-3"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>Still the furthest from the target</strong></p>
+<p>The hands: white, smooth, like a shop mannequin's, holding a modern digital camera in a house that has stood untouched since 1974. New models for everything held in the hand (made by Rodin from our own pictures) were imported at 23:15 and are not in the game yet. Also: the held lantern shows a whole arm across the view, the torch's flame is a metre high, the ground round the house reads as a dry southern garden, and the floors look new.</p></aside>
+<figure id="fig-10"><a class="zoom" href="media/full/2026-11-13-0030-hands.jpg"><img src="media/2026-11-13-0030-hands.jpg" srcset="media/thumb/2026-11-13-0030-hands.jpg 640w, media/2026-11-13-0030-hands.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="First person in the hall by day: two white, smooth, doll-like hands hold a modern silver compact camera with a black screen; the subtitle says &quot;His camera. There is still film in it.&quot;" width="1600" height="900" loading="lazy" decoding="async"></a><figcaption>The hands and the camera at 23:38. Both are being replaced.</figcaption></figure>
+<h6 id="the-director-a-second-figure">The Director, a second figure</h6>
+<p>A second, more real figure of him was made in the same hour: a new picture in drained real colours (brown corduroy, a yellowed shirt, a moth-eaten scarf), from which Rodin made a body of a million faces; a portrait of his head, from which it made a bust; and a script of ours that grafts the bust's head onto the body under the scarf.</p>
+<aside class="failure" id="failed-4"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>The second figure came into the game white</strong></p>
+<p>In its first runs in the game he had no surfaces at all: a white figure, like plaster. The agent is finding out why. The first figure can still be switched back in, and both can be shown side by side when the second is right.</p></aside>
+<figure id="fig-11"><a class="zoom" href="media/full/2026-11-13-0030-director-white.jpg"><img src="media/2026-11-13-0030-director-white.jpg" srcset="media/thumb/2026-11-13-0030-director-white.jpg 640w, media/2026-11-13-0030-director-white.jpg 1600w" sizes="(max-width: 44rem) 100vw, 64rem" alt="Twelve frames from the running game of the second figure of the Director, all white and without surfaces: in a test room, close on his hand holding the clapperboard, walking in the hall." width="1600" height="676" loading="lazy" decoding="async"></a><figcaption>The second figure in the game at 00:13, white. Laid side by side by a script.</figcaption></figure>
+<h6 id="the-frame-rate-and-how-we-measured-it-wrong">The frame rate, and how we measured it wrong</h6>
+<aside class="failure" id="failed-5"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>Our own screenshots made the stutter worse than it is</strong></p>
+<p>The last entry reported frames of a fifth to two fifths of a second every 20 to 40 seconds. The light and frame-rate agent found that every one of those runs was also taking screenshots, and a screenshot is itself a frame of 200 to 400 milliseconds; some of the rest were the image model's jobs sharing the graphics card. Measured again with no screenshots and the card to itself: 127 to 200 frames a second, half of them above 169, and two frames over a tenth of a second in ten minutes. Some of what is left are things loaded the first time they are lifted or heard; those can be loaded earlier.</p></aside>
+<aside class="failure" id="failed-6"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>Two lost test runs, and a broken build</strong></p>
+<p>A script handed its settings on through a second script, which split them at the first space: two of the light agent's runs ran without half their settings and were thrown away. And from about 22:50 to 23:18 no build succeeded for anyone: one line in the door code hid a name, and a plugin did not yet compile. The line was fixed in a minute, but every agent waits its turn for the build, so the half hour was lost to the queue.</p></aside>
+<p>NVIDIA's frame generation plugins now compile for this preview engine and sit in the project switched off, until they are proven to load and run. The ray-tracing trial is queued behind the other agents' runs.</p>
+<h6 id="next">Next</h6>
+<p>The hands and the camera, the second figure's surfaces, a shorter day one, the ground round the house, and the ray-tracing trial with its costs.</p>
+      </div>
+    </article>
+    <nav class="turn" aria-label="Earlier and later entries">
+      <a class="turn-prev" href="2026-11-12-2255-first-night.html" rel="prev"><span class="turn-label">Earlier</span><span class="turn-pic"><img src="media/thumb/2026-11-12-2255-forest-after.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span><span class="turn-when">Thu 12 Nov, 22:55</span><span class="turn-title">The first night: the house gets its face, the forest is replaced, and day one fails on real feet</span></a>
+      <a class="turn-next" href="2026-11-13-0230-first-package.html" rel="next"><span class="turn-label">Later</span><span class="turn-pic"><img src="media/thumb/2026-11-13-0230-title.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span><span class="turn-when">Fri 13 Nov, 02:30</span><span class="turn-title">Half past two: the first packaged game, ray tracing measured, and day one cut in half</span></a>
+    </nav>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <p>GLEMT is a solo entry in the 2026 Epic AI MegaJam (theme: Director's Cut), made between Thursday 12 November and Sunday 15 November 2026, Danish time. Team name: Faluf.</p>
+      <p>This site is built from plain text entries by a small script and holds no tracking, no cookies and no requests to other servers. The game's source is in a private repository; its commit history shows when each thing was made.</p>
+      <p class="foot-links"><a href="index.html">Front page</a> <a href="index.html#log">All entries</a> <a href="pictures.html">All pictures</a> <a href="#top">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>
