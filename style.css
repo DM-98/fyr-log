@@ -197,6 +197,30 @@ details.how dd { margin: 0.1rem 0 0; text-wrap: pretty; }
 .letter { max-width: 42rem; margin: 0.5rem 0 4rem; padding-left: 1.5rem; border-left: 2px solid var(--sea); font-size: clamp(1.1875rem, 1.05rem + 0.45vw, 1.3125rem); line-height: 1.6; }
 .letter p { margin: 0 0 1.1rem; text-wrap: pretty; }
 .letter p:last-child { margin-bottom: 0; color: var(--soft); font-size: 1.0625rem; }
+/* the road beside the letter: a line, a siding and back, with a point of light running it */
+.notes-grid { display: grid; grid-template-columns: minmax(0, 42rem) minmax(15rem, 21rem); gap: 2rem clamp(2rem, 5vw, 4.5rem); align-items: start; margin-bottom: 4rem; }
+.notes-grid .letter { margin-bottom: 0; }
+.journey { position: sticky; top: 5.5rem; }
+.journey-map { display: block; width: 100%; height: auto; overflow: visible; }
+.journey-map path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.j-main { stroke: var(--sea); stroke-width: 3; stroke-dasharray: 120; stroke-dashoffset: 120; animation: j-draw 0.7s ease-out 0.15s forwards; }
+.j-back { animation-delay: 2.1s; }
+.j-side { stroke: #e3a84a; stroke-width: 3; stroke-dasharray: 420; stroke-dashoffset: 420; animation: j-draw 1.3s ease-in-out 0.8s forwards; }
+.j-wait { stroke: var(--rule-strong); stroke-width: 2; stroke-dasharray: 2 9; }
+.j-arrow { stroke: var(--sea); stroke-width: 3; opacity: 0; animation: j-show 0.4s ease-out 2.7s forwards; }
+.j-stop { fill: var(--ground); stroke: var(--sea); stroke-width: 3; }
+.j-stop.j-other { stroke: #e3a84a; }
+.j-name { font: 800 1.5rem/1 var(--display); letter-spacing: 0.04em; fill: var(--ink); }
+.j-name.j-other { fill: #e3a84a; text-decoration: underline; }
+.journey-map a:hover .j-name, .journey-map a:focus-visible .j-name { fill: var(--ink); }
+.j-when { font: 600 0.75rem/1 var(--display); letter-spacing: 0.1em; text-transform: uppercase; fill: var(--sea); }
+.j-note { font: 400 0.8125rem/1 var(--text); fill: var(--soft); }
+.j-runner { fill: #fff3d1; filter: drop-shadow(0 0 6px rgb(255 236 190 / 0.9)); offset-path: path("M70 40 L70 122 C70 162 190 142 190 186 L190 258 C190 302 70 282 70 322 L70 428"); offset-rotate: 0deg; animation: j-run 6.5s cubic-bezier(0.45, 0, 0.55, 1) 3s infinite; opacity: 0; }
+@keyframes j-draw { to { stroke-dashoffset: 0; } }
+@keyframes j-show { to { opacity: 1; } }
+@keyframes j-run { 0% { offset-distance: 0%; opacity: 0; } 4% { opacity: 1; } 88% { offset-distance: 100%; opacity: 1; } 94%, 100% { offset-distance: 100%; opacity: 0; } }
+@supports not (offset-path: path("M0 0 L1 1")) { .j-runner { display: none; } }
+@media (max-width: 60rem) { .notes-grid { grid-template-columns: minmax(0, 1fr); } .journey { position: static; max-width: 22rem; } }
 .letter a { color: var(--sea); text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 0.2em; }
 .letter a:hover { color: var(--ink); }
 .letter .annex-link { font-weight: 650; }
