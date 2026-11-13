@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day two: the rebuild, planned around the hut, the walk and three ways to fight | FYR production log</title>
+  <meta name="description" content="The developer's plan for a game he would want to play: plan the night at a PC in the keeper's hut, walk out into the storm, and fight from the lighthouse with a gun, a laser and the great lens, while a tablet can stop…">
+  <meta property="og:title" content="Day two: the rebuild, planned around the hut, the walk and three ways to fight | FYR production log">
+  <meta property="og:description" content="The developer's plan for a game he would want to play: plan the night at a PC in the keeper's hut, walk out into the storm, and fight from the lighthouse with a gun, a laser and the great lens, while a tablet can stop…">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#100f0e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23100f0e'/%3E%3Crect x='9' y='3' width='4' height='6' fill='%236fb7d8'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="log.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the content</a>
+  <header class="bar">
+    <div class="bar-in">
+      <a class="brand" href="index.html"><span class="brand-word">FYR</span> <span class="brand-sub">production log</span></a>
+      <nav class="bar-nav" aria-label="Sections">
+        <a href="index.html#making">How it is made</a>
+        <a href="index.html#log">Log</a>
+        <a href="pictures.html">Pictures</a>
+        <a href="index.html#failures">What went wrong</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="entry-page">
+    <article class="entry" id="2026-11-13-1320-the-rebuild-planned" data-kinds="process hut map lighthouse">
+      <header class="entry-head">
+        <p class="crumbs"><a href="index.html#log">The log</a> <span aria-hidden="true">/</span> <a href="index.html#day-2">Day 2</a></p>
+        <p class="slate"><span>Day 2</span> <span>Friday 13 November</span> <time datetime="2026-11-13T13:20">13:20</time></p>
+        <h1>Day two: the rebuild, planned around the hut, the walk and three ways to fight</h1>
+        <p class="entry-facts">2 pictures <span aria-hidden="true">·</span> 8 min read</p>
+        <p class="entry-tags"><a class="tag" href="index.html?tag=process#log">how it is run</a> <a class="tag" href="index.html?tag=hut#log">the hut</a> <a class="tag" href="index.html?tag=map#log">the map and the plan</a> <a class="tag" href="index.html?tag=lighthouse#log">the lighthouse</a></p>
+        <p class="gate"><span>Checkpoint</span> The plan, before the lanes start</p>
+      <nav class="toc" aria-labelledby="toc-2026-11-13-1320-the-rebuild-planned">
+        <h2 id="toc-2026-11-13-1320-the-rebuild-planned">In this entry</h2>
+        <ol>
+          <li><a href="#what-he-asked-for">What he asked for</a></li>
+          <li><a href="#one-night-in-five-places">One night, in five places</a></li>
+          <li><a href="#the-guide">The guide</a></li>
+          <li><a href="#the-first-ten-minutes-as-they-are-meant-to-go">The first ten minutes, as they are meant to go</a></li>
+          <li><a href="#the-theme-kept-to-what-the-player-does">The theme, kept to what the player does</a></li>
+          <li><a href="#how-it-is-built-ten-lanes-one-integrator">How it is built: ten lanes, one integrator</a></li>
+          <li><a href="#the-gates">The gates</a></li>
+          <li><a href="#what-could-go-wrong">What could go wrong</a></li>
+        </ol>
+      </nav>
+      </header>
+      <div class="body cols">
+<p>On Friday morning the developer decided to rebuild FYR around a plan of his own, and to start it in a fresh repository with only the first version's files in it. This entry is that plan in plain words, written before the first line of the new code, so that the entries after it can be checked against it.</p>
+<h6 id="what-he-asked-for">What he asked for</h6>
+<p>He wants FYR to be a game he would play himself, with the feel of a competitive shooter: quick to read, with low latency (NVIDIA Reflex is on by default), and with every hit feeling good. From the first version he kept the sound, the controls and the gun. What he added is everything around the gun: a plan before each night, a reason to come back, and a screen that always says what to do next. Big ships should die in about five seconds; bosses may take longer. Objects should pass as real, and no visual bug or clipping is ever left for later. Judges may play for about ten minutes, so the first ten minutes have to be the best ten.</p>
+<h6 id="one-night-in-five-places">One night, in five places</h6>
+<figure id="fig-1"><a class="zoom" href="media/2026-11-13-1320-the-loop.svg"><img src="media/2026-11-13-1320-the-loop.svg" alt="One night in FYR. Diagram drawn for this log from the design; the arrows are the player's own actions." loading="lazy" decoding="async"></a><figcaption aria-hidden="true">One night in FYR. Diagram drawn for this log from the design; the arrows are the player's own actions.</figcaption></figure>
+<p><strong>The hut.</strong> The keeper's hut at the foot of the rock replaces the first version's supply shed. He sits at a desk in a canvas director's chair, and the camera pushes into his monitor in 1.2 seconds. The screen becomes the plan:</p>
+<ul><li>the island from above, drawn as a nautical chart: a picture of the real level taken from straight above, regraded slate blue, with contour lines made from its depth;</li><li>the lighthouse in the middle, with a ring round it that is the lamp's health;</li><li>14 pads for turrets (10 on the rock and 4 brackets on the gallery), each with the arc of sky it can fire into;</li><li>tonight's attacks as red arrows from the edge of the sea, with counts (&quot;12 scouts&quot;);</li><li>four turret cards, the lighthouse's card, UPGRADE ALL, and READY, the biggest button on the screen.</li></ul>
+<p>Pick a turret card and the free pads light up. Hover a pad and a see-through turret stands on it, its arc of fire drawn as a wedge, and the red arrows it covers turn white. That one picture is the guidance: it shows where the danger comes from and what a turret there would do about it. Selling gives back everything spent on that turret, so no choice is a trap.</p>
+<p><strong>The walk.</strong> On READY the view pulls out of the monitor. In first person the keeper stands and opens the door; wind and rain swell; he walks the path with the lighthouse beam passing overhead and saucer lights on the horizon. At the tower door the screen goes black for one second while the stairs are heard, and it fades up at the gun with &quot;ACTION!&quot;. Seven seconds the first night, three after that, and any key skips it.</p>
+<p><strong>The lighthouse.</strong> The turrets fight by themselves. The keeper fights from three stations, and every station stays once it is bought:</p>
+<div class="table"><table><thead><tr><th>Tier</th><th>Station</th><th>Bought</th><th>How it plays</th><th>Its limit</th></tr></thead><tbody><tr><td>1</td><td>the gallery gun</td><td>owned at the start</td><td>hold to fire; recoil, tracers, zoom</td><td>overheats after 20 rounds</td></tr><tr><td>2</td><td>a laser on the same mount</td><td>300 credits, after Night 1</td><td>hold and sweep; cuts saucers in two; arcs to a neighbour</td><td>4 seconds of burn, 6 to recharge</td></tr><tr><td>3</td><td>the great lens</td><td>750 credits, after Night 2</td><td>gloved hands on the brass handles of the lighthouse's own lens, rain on the glass: a wide burning shaft that also burns everything within 12 metres</td><td>6 seconds of burn, 8 to recharge</td></tr></tbody></table></div>
+<p>The keys 1, 2 and 3 switch between them. Rotating the three cooldowns is the skill a good player learns.</p>
+<p><strong>The live map</strong> sits on the right during the fight: the same chart as the PC, live, with the turrets' tracer lines to their targets, enemies as red icons by kind, the player's aim as an amber wedge from the lighthouse, and kills as white bursts. M makes it large, small or hidden.</p>
+<p><strong>The tablet.</strong> Tab, at any moment of the night: time stops completely, the picture holds as a slightly faded still, &quot;CUT!&quot; lands with a clapper's snap, and the keeper's gloved hands raise a tablet whose screen is the same plan as the PC. Everything on it works. Tab again and &quot;ACTION!&quot;: the night rolls on from the same frame, with no countdown. It never opens by itself. Under the map, &quot;UPGRADE READY&quot; pulses softly whenever the credits cover an upgrade, and R buys the cheapest turret upgrades one after another until nothing more is affordable.</p>
+<p><strong>The end of the night.</strong> The last enemy falls: a second of slow motion, &quot;NIGHT 3 HELD&quot;, a card with the kills, the credits and the lamp left, and the keeper is back at his PC with the next night's plan. If the lamp goes dark instead: &quot;THE LAMP WENT DARK&quot;, and he is back in the hut on &quot;NIGHT 4 · TAKE 2&quot; with exactly what he had at READY. Nothing else is lost.</p>
+<p>Nights 1 to 4 are written by hand; from Night 5 the game writes its own. A mothership comes every fourth night, stronger each time. Night 20 is &quot;The Last Night&quot;, three motherships that turrets alone cannot hold; after it the nights go on without end, each 12% harder than the last.</p>
+<h6 id="the-guide">The guide</h6>
+<p>One line at a time in a glass panel at the top left, with the key it means drawn as a key, and the thing it refers to outlined in amber. A line leaves when it is done or after 12 seconds; the guide never stops the game. There are 22 lines across the first four nights, written into the design before any code:</p>
+<ul><li>&quot;Buy a Twin Gun: click it, then click a pad on the map.&quot;</li><li>&quot;The wedge shows where it can fire. Tonight they come from the north-west.&quot;</li><li>&quot;You can afford an upgrade. R upgrades your turrets. Tab stops the night so you can choose.&quot;</li><li>&quot;A Harvester drains the lamp. Shoot the glowing eye underneath.&quot;</li><li>&quot;Everything is back as it was before this night. Try another plan: selling gives the full price back.&quot;</li></ul>
+<h6 id="the-first-ten-minutes-as-they-are-meant-to-go">The first ten minutes, as they are meant to go</h6>
+<div class="table"><table><thead><tr><th>Time</th><th>What happens</th></tr></thead><tbody><tr><td>0:10</td><td>at the PC; the guide says buy a Twin Gun</td></tr><tr><td>0:35</td><td>READY, and the walk</td></tr><tr><td>0:43</td><td>one second of black, ACTION!, at the gun</td></tr><tr><td>0:50</td><td>the first kill: the saucer burns, tumbles and splashes</td></tr><tr><td>1:25</td><td>the first CUT: the twin gun to level 2, ACTION</td></tr><tr><td>2:00</td><td>NIGHT 1 HELD, with about 330 credits</td></tr><tr><td>2:50</td><td>the laser cuts its first saucer in two</td></tr><tr><td>4:15</td><td>NIGHT 2 HELD; lightning shows the 520 metre mothership above the cloud, two nights away</td></tr><tr><td>5:55</td><td>the carrier: its launch bays shot off, dead in about five seconds, a burning fall and a wave</td></tr><tr><td>7:15</td><td>Night 4: press 3, the lantern room, a whole flock burned in one sweep</td></tr><tr><td>8:50</td><td>the mothership: its towers, its core with the lens, then cut in two with the laser, both halves into the sea</td></tr></tbody></table></div>
+<p>Every number behind this table (prices, health, damage, how long each night lasts) is in one tuning file, so balance changes need no rebuild.</p>
+<h6 id="the-theme-kept-to-what-the-player-does">The theme, kept to what the player does</h6>
+<p>The keeper directs the defence: he blocks the scene at his monitor, steps into it, can call CUT at any moment to re-edit it and roll again, and a lost night is shot again as a new take. So the only film words on screen are ACTION!, CUT! and TAKE 2, each of them a real action. Kept beside them: the subtitle &quot;Director's Cut&quot;, the clapper's snap as a sound, and the laser's cut. Dropped from the first version: the slate, the film leader, the timecode, film puns in the menus, and the cutting room. The developer's own best run will be on the records board as a row named &quot;The Director&quot;, to beat.</p>
+<h6 id="how-it-is-built-ten-lanes-one-integrator">How it is built: ten lanes, one integrator</h6>
+<p>On Thursday several agents worked in one copy of the code, and one agent's half-finished change could break another's build. So on Friday the work is split into lanes, each one Claude Code agent with its own git worktree and branch, its own copy of the game to build and run, and its own files. Before the lanes start, the integrator writes the seams: the shared headers where the parts meet (the phases of a night, buying and placing, the stations, the tablet). After that only the integrator changes them.</p>
+<figure id="fig-2"><a class="zoom" href="media/2026-11-13-1320-the-lanes.svg"><img src="media/2026-11-13-1320-the-lanes.svg" alt="How the rebuild is split. Diagram drawn for this log." loading="lazy" decoding="async"></a><figcaption aria-hidden="true">How the rebuild is split. Diagram drawn for this log.</figcaption></figure>
+<p>The integrator merges one branch at a time, builds, and runs a two-minute test in which a bot plays the hut, presses READY and defends; a branch that breaks it is taken out again. One lock lets one build, one editor script or one game run happen at a time, whoever asks, and every script waits while the developer is playing so that his game does not stutter. A verifier plays every merged version and hunts for what a player would find: an unclear step, a clipping, a flicker, a picture that reads badly at night. This log is the last lane: it reads the boards where the lanes post their faults and requests, and the history of the main branch.</p>
+<p>New tools for the rebuild, all on the entry's list from the start: Blender simulates fire and smoke for the explosions and renders them to sprite sheets, and Rodin makes the hut, the lantern room's brass lens, the tablet in the keeper's hands and, if it holds up, a rigged keeper for one outside shot of the walk.</p>
+<h6 id="the-gates">The gates</h6>
+<div class="table"><table><thead><tr><th>When (Danish time)</th><th>Gate</th></tr></thead><tbody><tr><td>Friday about 19:00</td><td>the developer plays the first playable loop: hut, walk, fight, night held, back in the hut</td></tr><tr><td>Saturday about 14:00</td><td>he plays the full loop with its new look</td></tr><tr><td>Saturday about 22:00</td><td>everything in; the gameplay video recorded from the real game</td></tr><tr><td>Sunday 14:00</td><td>feature freeze</td></tr><tr><td>Sunday 22:00</td><td>the developer hands the entry in (Epic's deadline is Monday 02:59)</td></tr></tbody></table></div>
+<h6 id="what-could-go-wrong">What could go wrong</h6>
+<ul><li>Ray tracing in a preview engine recompiles every material once, and its look has to be clearly better than the first version's before it is turned on by default.</li><li>The tablet needs a paused world in which only the tablet and the director still tick.</li><li>The rigged keeper for the outside shot may not survive the import; then the walk stays in first person, which is the plan anyway.</li><li>The lanes start from the seams; if a seam is wrong, every lane feels it. That is why one agent owns them.</li></ul>
+      </div>
+    </article>
+    <nav class="turn" aria-label="Earlier and later entries">
+      <a class="turn-prev" href="2026-11-12-1540-the-first-version.html" rel="prev"><span class="turn-label">Earlier</span><span class="turn-pic"><img src="media/thumb/2026-11-12-0822-mothership-iris.jpg" alt="" width="640" height="360" loading="lazy" decoding="async"></span><span class="turn-when">Thu 12 Nov, 15:40</span><span class="turn-title">Day one: a gun on a lighthouse in a storm</span></a>
+      <span class="turn-none"></span>
+    </nav>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <p>FYR is a solo entry in the 2026 Epic AI MegaJam (theme: Director's Cut), made between Thursday 12 November and Sunday 15 November 2026, Danish time. Team name: Faluf.</p>
+      <p>This site is built from plain text entries by a small script and holds no tracking, no cookies and no requests to other servers. The game's source is in a private repository; its commit history shows when each thing was made.</p>
+      <p class="foot-links"><a href="index.html">Front page</a> <a href="index.html#log">All entries</a> <a href="pictures.html">All pictures</a> <a href="#top">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>

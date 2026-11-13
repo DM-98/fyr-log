@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990 520" width="990" height="520" role="img" aria-label="One night in FYR: the title, the hut, the walk, the lighthouse, the tablet and the end of the night">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6fb7d8"/>
+    </marker>
+  </defs>
+  <rect width="990" height="520" fill="#12100f"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#efe9e0">
+    <!-- row one -->
+    <rect x="30" y="40" width="260" height="150" rx="10" fill="#1c1a18" stroke="#6fb7d8" stroke-width="1.5"/>
+    <text x="46" y="72" font-size="17" font-weight="bold" letter-spacing="1">1 · THE HUT</text>
+    <text font-size="13" fill="#d8d1c6"><tspan x="46" y="100">At the PC the island is a chart:</tspan><tspan x="46" y="120">buy, place and upgrade turrets</tspan><tspan x="46" y="140">on its 14 pads. No clock:</tspan><tspan x="46" y="160">nothing happens until READY.</tspan></text>
+
+    <rect x="365" y="40" width="260" height="150" rx="10" fill="#1c1a18" stroke="#6fb7d8" stroke-width="1.5"/>
+    <text x="381" y="72" font-size="17" font-weight="bold" letter-spacing="1">2 · THE WALK</text>
+    <text font-size="13" fill="#d8d1c6"><tspan x="381" y="100">The keeper stands, opens the</tspan><tspan x="381" y="120">door into the storm and walks</tspan><tspan x="381" y="140">the path under the beam. One</tspan><tspan x="381" y="160">second of black at the tower.</tspan></text>
+
+    <rect x="700" y="40" width="260" height="150" rx="10" fill="#1c1a18" stroke="#6fb7d8" stroke-width="1.5"/>
+    <text x="716" y="72" font-size="17" font-weight="bold" letter-spacing="1">3 · THE LIGHTHOUSE</text>
+    <text font-size="13" fill="#d8d1c6"><tspan x="716" y="100">Defend the lamp: 1 the Gun,</tspan><tspan x="716" y="120">2 the Laser, 3 the great Lens.</tspan><tspan x="716" y="140">The turrets fire on their own;</tspan><tspan x="716" y="160">a live map on the right.</tspan></text>
+
+    <!-- row two -->
+    <rect x="30" y="320" width="260" height="150" rx="10" fill="#171513" stroke="#5a544c" stroke-width="1.2"/>
+    <text x="46" y="350" font-size="17" font-weight="bold" letter-spacing="1">THE TITLE</text>
+    <text font-size="13" fill="#d8d1c6"><tspan x="46" y="378">A live shot from the sea: the</tspan><tspan x="46" y="398">beam sweeping, the hut's lit</tspan><tspan x="46" y="418">window at the foot of the rock.</tspan></text>
+
+    <rect x="365" y="320" width="260" height="150" rx="10" fill="#171513" stroke="#5a544c" stroke-width="1.2"/>
+    <text x="381" y="350" font-size="17" font-weight="bold" letter-spacing="1">END OF THE NIGHT</text>
+    <text font-size="13" fill="#d8d1c6"><tspan x="381" y="378">Held: a result card, credits,</tspan><tspan x="381" y="398">and the next night's plan.</tspan><tspan x="381" y="418">Lost: TAKE 2, with everything</tspan><tspan x="381" y="438">as it was at READY.</tspan></text>
+
+    <rect x="700" y="320" width="260" height="150" rx="10" fill="#171513" stroke="#5a544c" stroke-width="1.2"/>
+    <text x="716" y="350" font-size="17" font-weight="bold" letter-spacing="1">THE TABLET</text>
+    <text font-size="13" fill="#d8d1c6"><tspan x="716" y="378">Time stops. The same plan in</tspan><tspan x="716" y="398">the keeper's hands: buy, place,</tspan><tspan x="716" y="418">upgrade. Then the night rolls</tspan><tspan x="716" y="438">on from the same frame.</tspan></text>
+
+    <!-- arrows -->
+    <g stroke="#6fb7d8" stroke-width="2" fill="none">
+      <line x1="292" y1="115" x2="361" y2="115" marker-end="url(#a)"/>
+      <line x1="627" y1="115" x2="696" y2="115" marker-end="url(#a)"/>
+      <line x1="810" y1="192" x2="810" y2="316" marker-end="url(#a)"/>
+      <line x1="850" y1="318" x2="850" y2="194" marker-end="url(#a)"/>
+      <line x1="730" y1="192" x2="605" y2="316" marker-end="url(#a)"/>
+      <line x1="390" y1="318" x2="265" y2="194" marker-end="url(#a)"/>
+      <line x1="160" y1="318" x2="160" y2="194" marker-end="url(#a)"/>
+    </g>
+    <g font-size="14" font-weight="bold" fill="#efe9e0">
+      <text x="327" y="103" text-anchor="middle">READY</text>
+      <text x="662" y="103" text-anchor="middle">ACTION!</text>
+      <text x="800" y="258" text-anchor="end">Tab: CUT!</text>
+      <text x="860" y="258">ACTION!</text>
+    </g>
+    <g font-size="13" fill="#9fc9de">
+      <text x="642" y="300">the night ends</text>
+      <text x="318" y="268" text-anchor="end">next night</text>
+      <text x="170" y="258">PLAY</text>
+    </g>
+    <text x="30" y="505" font-size="13" fill="#9a9288">Every film word on screen is something the player does: ACTION!, CUT! and TAKE 2.</text>
+  </g>
+</svg>
