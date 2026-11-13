@@ -93,6 +93,18 @@ img { max-width: 100%; }
 .reveal a:hover, .reveal a:focus-visible { text-decoration: underline; }
 .reveal .reveal-here { color: var(--soft); }
 .hero-name.has-reveal:focus-within, .hero-name.has-reveal.lit { --r: 60rem; }
+/* A lamp with a loose wire: about every five seconds the line flickers on for a third of a second (two short blinks),
+   which is how a reader without the torch learns it is there. Off while the pointer's own light is on it. */
+@property --r { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@keyframes loose-wire {
+  0%, 91.9% { --r: 0px; }
+  92%, 93.4% { --r: 60rem; }
+  93.5%, 94.9% { --r: 0px; }
+  95%, 98.5% { --r: 60rem; }
+  98.6%, 100% { --r: 0px; }
+}
+.hero-name.has-reveal { animation: loose-wire 5.2s steps(1, end) infinite; }
+.hero-name.has-reveal:hover, .hero-name.has-reveal:focus-within, .hero-name.has-reveal.lit { animation: none; }
 .gloss { margin: 0.9rem 0 0; color: var(--faint); font-size: 1rem; font-style: italic; }
 .gloss em { font-style: normal; color: var(--soft); }
 .hero-says { padding-bottom: 0.2rem; }
