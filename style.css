@@ -206,7 +206,6 @@ details.how dd { margin: 0.1rem 0 0; text-wrap: pretty; }
 .door-fact { font: 800 clamp(1.75rem, 1.4rem + 1.2vw, 2.375rem)/1 var(--display); color: var(--ink); font-variant-numeric: tabular-nums; }
 .door-line { font-size: 0.9375rem; line-height: 1.5; color: var(--soft); text-wrap: pretty; }
 .door-name::after { content: " \2192"; }
-@media (prefers-reduced-motion: reduce) { .door { transition: none; } .door:hover { transform: none; } }
 
 /* the log */
 .filters { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1.75rem; }
@@ -435,10 +434,9 @@ dialog.viewer::backdrop { background: #080807; }
   .viewer-step[data-step="1"] { right: 0.6rem; }
   .viewer figcaption { padding-left: 0; padding-right: 0; }
 }
-@media (prefers-reduced-motion: no-preference) {
   dialog.viewer[open] { animation: viewer-in 0.16s ease-out; }
   dialog.viewer[open] img { animation: picture-in 0.2s ease-out; }
-}
+
 @keyframes viewer-in { from { opacity: 0; } }
 @keyframes picture-in { from { transform: scale(0.985); } }
 
@@ -446,9 +444,7 @@ dialog.viewer::backdrop { background: #080807; }
   body { font-size: 1.0625rem; line-height: 1.6; }
   .body blockquote { font-size: 1.25rem; }
 }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; }
-}
+/* The pages move whatever the system's animation setting says (the developer's rule for all his sites). */
 @media print {
   :root { --ground: #fff; --ground-2: #fff; --ground-3: #f2f2f2; --ink: #111; --soft: #444; --faint: #666; --rule: #ccc; --rule-strong: #999; --sea: #1d5f80; --red: #a12c1c; }
   .bar, .skip, .filters, .turn, .foot-links { display: none; }
