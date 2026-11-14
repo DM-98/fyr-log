@@ -34,9 +34,25 @@
   </header>
   <main id="main" class="failures-page">
     <div class="wrap">
-      <h1 class="page-title">What went wrong <span class="count">15</span></h1>
+      <h1 class="page-title">What went wrong <span class="count">17</span></h1>
       <p class="section-note">A glass box shows the cracks too. Every failure the log tells, newest first: what broke, in a few lines, and a link to where it is told in full with what was done about it.</p>
       <ol class="fcards">
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-14-1435-the-keeper-learns-to-move.html#failed-1">
+            <span class="when">Sat 14 Nov, 14:35</span>
+            <span class="what">Our checks passed an ending in which the keeper walked through solid stone</span>
+          </a>
+          <p class="fcard-text">The ending had passed every automated run and every strip of pictures, and the developer found the fault in the first video he saw. The walk home put the keeper's feet on the ground by a trace straight down that ignores the hut (whose meshes have no collision), so on the doorstep his feet stood on the rock underneath it.</p>
+          <p class="fcard-from">Told in <a href="2026-11-14-1435-the-keeper-learns-to-move.html#failed-1">Watching the ending, and a keeper who moves like a tired old man</a></p>
+        </li>
+        <li class="fcard">
+          <a class="fcard-link" href="2026-11-14-1435-the-keeper-learns-to-move.html#failed-2">
+            <span class="when">Sat 14 Nov, 14:35</span>
+            <span class="what">The motion model could not use the graphics card, and its first batch was stopped halfway</span>
+          </a>
+          <p class="fcard-text">With the bundled PyTorch every take ran on the processor, and a whole batch of takes ran inside one step of the editor's test. The headless editor's watchdog ends a run that shows no sign of life for 15 minutes, and it stopped the batch partway through the third of its four clips.</p>
+          <p class="fcard-from">Told in <a href="2026-11-14-1435-the-keeper-learns-to-move.html#failed-2">Watching the ending, and a keeper who moves like a tired old man</a></p>
+        </li>
         <li class="fcard">
           <a class="fcard-link" href="2026-11-14-0125-the-first-ending.html#failed-1">
             <span class="when">Sat 14 Nov, 01:25</span>
