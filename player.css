@@ -1,0 +1,445 @@
+/* The production log's video player (player.js), for FYR's gameplay video in the front page's theatre. Quiet by design:
+   a thin line of progress in the log's accent, plain white icons on a dark fade, nothing boxed. Two colours on the
+   player's root element: --player-accent (progress, focus, the captions mark; the log's stormy sea, style.css --sea)
+   and --player-ink (icons and text). log.js loads this file with player.js, on the first sign of interest. */
+
+.player {
+  --player-accent: var(--sea, #6fb7d8);
+  --player-ink: #f4ede0;
+}
+
+.player:focus {
+  outline: none;
+}
+
+.player.is-active.is-idle {
+  cursor: none;
+}
+
+.player:fullscreen {
+  background: #000;
+}
+
+/* ---------- the control bar ---------- */
+
+.player-bar {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 3;
+  padding: 4rem clamp(0.75rem, 2.5vw, 1.75rem) clamp(0.5rem, 1.6vw, 1rem);
+  background: linear-gradient(to top, rgb(0 0 0 / 72%), rgb(0 0 0 / 34%) 55%, transparent);
+  color: var(--player-ink);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.player.is-active .player-bar {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.player-bar > * {
+  pointer-events: auto;
+}
+
+/* Resting controls fade away but stay focusable, so Tab brings them straight back. */
+.player.is-active.is-idle .player-bar {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.player.is-active.is-idle .player-bar > * {
+  pointer-events: none;
+}
+
+.player-row {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-top: 0.15rem;
+}
+
+.player-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.86;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.player-button:hover {
+  opacity: 1;
+  background: rgb(255 255 255 / 10%);
+}
+
+.player-button:focus-visible,
+.player-slider:focus-visible {
+  outline: 2px solid var(--player-accent);
+  outline-offset: 2px;
+}
+
+.player-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: currentColor;
+}
+
+.player-icon .line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* One icon per state. */
+.player[data-paused="true"] .icon-pause,
+.player[data-paused="false"] .icon-play,
+.player-mute .player-icon,
+.player.is-fullscreen .icon-enter,
+.player:not(.is-fullscreen) .icon-exit {
+  display: none;
+}
+
+.player[data-volume="high"] .icon-high,
+.player[data-volume="low"] .icon-low,
+.player[data-volume="off"] .icon-off {
+  display: block;
+}
+
+.player-time {
+  margin: 0 auto 0 0.6rem;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.player-of {
+  opacity: 0.6;
+}
+
+/* Captions on: a short line in the accent under the icon. */
+.player-cc[aria-pressed="false"] {
+  opacity: 0.55;
+}
+
+.player-cc[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  inset: auto 32% 0.45rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--player-accent);
+}
+
+/* ---------- quality: the height in use, and a menu to choose (Auto, or one height) ---------- */
+
+.player-quality {
+  position: relative;
+}
+
+.player-quality-button {
+  width: auto;
+  min-width: 2.75rem;
+  padding: 0 0.7rem;
+  border-radius: 1.375rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.player-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.5rem);
+  display: grid;
+  min-width: 9.5rem;
+  padding: 0.3rem;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 0.6rem;
+  background: rgb(6 8 11 / 90%);
+  box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 45%);
+}
+
+.player-menu[hidden] {
+  display: none;
+}
+
+.player-menu-item {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0.75rem 0.55rem 1.5rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 0.9375rem;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.player-menu-item:hover,
+.player-menu-item:focus-visible {
+  background: rgb(255 255 255 / 10%);
+}
+
+.player-menu-item:focus-visible {
+  outline: 2px solid var(--player-accent);
+  outline-offset: -2px;
+}
+
+/* The choice in use: a dot in the accent. */
+.player-menu-item[aria-checked="true"]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0.65rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  margin-top: -0.1875rem;
+  border-radius: 50%;
+  background: var(--player-accent);
+}
+
+.player-menu-note {
+  font-size: 0.8125rem;
+  opacity: 0.6;
+}
+
+/* ---------- sliders: seek and volume ---------- */
+
+.player-slider {
+  --played: 0;
+  --buffered: 0;
+  --hover: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.player-track {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 22%);
+  transition: transform 0.15s ease;
+}
+
+.player-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+}
+
+.player-buffered {
+  background: rgb(255 255 255 / 22%);
+  transform: scaleX(var(--buffered));
+}
+
+.player-hover {
+  background: rgb(255 255 255 / 26%);
+  opacity: 0;
+  transform: scaleX(var(--hover));
+  transition: opacity 0.15s ease;
+}
+
+.player-played {
+  background: var(--player-accent);
+  transform: scaleX(var(--played));
+}
+
+/* The thumb rides a rail as wide as the track, so moving it never changes layout. */
+.player-rail {
+  position: absolute;
+  inset: 0;
+  transform: translateX(calc(var(--played) * 100%));
+  pointer-events: none;
+}
+
+.player-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin: -0.4375rem 0 0 -0.4375rem;
+  border-radius: 50%;
+  background: var(--player-accent);
+  box-shadow: 0 0 0 0.3rem rgb(0 0 0 / 22%);
+  transform: scale(0);
+  transition: transform 0.15s ease;
+}
+
+.player-slider:hover .player-track,
+.player-slider:focus-visible .player-track,
+.player-slider.is-dragging .player-track {
+  transform: scaleY(1.7);
+}
+
+.player-slider:hover .player-hover {
+  opacity: 1;
+}
+
+.player-slider:hover .player-thumb,
+.player-slider:focus-visible .player-thumb,
+.player-slider.is-dragging .player-thumb {
+  transform: scale(1);
+}
+
+.player-tip {
+  position: absolute;
+  bottom: 1.75rem;
+  left: var(--tip-x, 0);
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.3rem;
+  background: rgb(0 0 0 / 78%);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.player-scrub:hover .player-tip,
+.player-scrub.is-dragging .player-tip {
+  opacity: 1;
+}
+
+.player-volume {
+  display: flex;
+  align-items: center;
+}
+
+/* The volume slider opens beside the speaker on hover or focus; the rail is inset so the thumb never clips. */
+.player-level {
+  width: 0;
+  padding: 0 0.45rem;
+  overflow: hidden;
+  opacity: 0;
+  transition: width 0.2s ease, opacity 0.2s ease;
+}
+
+.player-level .player-rail {
+  inset: 0 0.45rem;
+}
+
+.player-volume:hover .player-level,
+.player-volume:focus-within .player-level,
+.player-level.is-dragging {
+  width: 6rem;
+  opacity: 1;
+}
+
+/* ---------- captions, loading, errors ---------- */
+
+.player-captions {
+  position: absolute;
+  bottom: clamp(1.25rem, 5%, 2.75rem);
+  left: 50%;
+  z-index: 2;
+  width: min(92%, 52rem);
+  text-align: center;
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition: transform 0.25s ease;
+}
+
+.player.is-active:not(.is-idle) .player-captions {
+  transform: translate(-50%, -4.25rem);
+}
+
+.player-captions[hidden] {
+  display: none;
+}
+
+.player-captions span {
+  padding: 0.12em 0.45em;
+  border-radius: 0.2em;
+  background: rgb(0 0 0 / 70%);
+  color: #fff;
+  font-size: clamp(1rem, 2.1vw, 1.625rem);
+  line-height: 1.55;
+  white-space: pre-line;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.player-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 3rem;
+  height: 3rem;
+  margin: -1.5rem 0 0 -1.5rem;
+  border: 2px solid rgb(255 255 255 / 18%);
+  border-top-color: var(--player-ink);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: player-spin 0.9s linear infinite;
+}
+
+.player-spinner[hidden],
+.player-message[hidden] {
+  display: none;
+}
+
+@keyframes player-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.player-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: min(88%, 26rem);
+  margin: 0;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  background: rgb(0 0 0 / 82%);
+  color: var(--player-ink);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+/* Phones change volume with their own buttons. */
+@media (pointer: coarse) {
+  .player-level {
+    display: none;
+  }
+
+  .player-slider {
+    height: 2rem;
+  }
+}

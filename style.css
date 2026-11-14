@@ -110,6 +110,9 @@ img { max-width: 100%; }
   46.1%, 100% { --mx: -9rem; --my: 3.2rem; --r: 0px; }
 }
 .hero-name.has-reveal { animation: torch-pass 3s linear infinite; }
+/* The torch's light reaches 1.5rem past the name; where the name is as wide as a phone's screen, that must not make
+   the page scroll sideways, so the front page's top section ends the light at its sides. */
+.hero { overflow-x: clip; }
 .hero-name.has-reveal:hover, .hero-name.has-reveal:focus-within, .hero-name.has-reveal.lit { animation: none; }
 .gloss { margin: 0.9rem 0 0; color: var(--faint); font-size: 1rem; font-style: italic; }
 .gloss em { font-style: normal; color: var(--soft); }
@@ -125,6 +128,21 @@ img { max-width: 100%; }
 .hero-picture .zoom { display: block; line-height: 0; cursor: zoom-in; }
 .hero-picture img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--ground-2); outline: 1px solid var(--rule-strong); outline-offset: -1px; }
 .hero-picture .cap { margin-top: 0.7rem; font-size: 0.9375rem; line-height: 1.5; color: var(--soft); text-wrap: pretty; }
+/* The gameplay video's way in: a play button in the middle of the picture, and the whole picture is the button
+   (log.js opens the theatre). A soft shade behind it keeps it readable on the brightest frame. */
+.hero-video { position: relative; line-height: 0; }
+.hero-play { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(0.55rem, 1.1vw, 0.9rem); color: #f4ede0; text-decoration: none; line-height: 1.2; cursor: pointer; }
+.hero-play:hover { color: #f4ede0; }
+.hero-play::before { content: ""; position: absolute; inset: 0; background: radial-gradient(closest-side, rgb(4 5 7 / 0.34), rgb(4 5 7 / 0) 78%); pointer-events: none; }
+.hero-play-disc { position: relative; display: grid; place-items: center; width: clamp(4rem, 2.8rem + 4.2vw, 6.25rem); aspect-ratio: 1; border-radius: 50%; background: rgb(10 10 9 / 0.55); box-shadow: inset 0 0 0 2px rgb(244 237 224 / 0.9), 0 0.6rem 2.2rem rgb(0 0 0 / 0.45); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease; }
+@supports (backdrop-filter: blur(1px)) { .hero-play-disc { background: rgb(10 10 9 / 0.4); backdrop-filter: blur(8px); } }
+.hero-play-disc svg { width: 40%; height: 40%; margin-left: 9%; fill: currentColor; }
+.hero-play-label { position: relative; display: inline-flex; align-items: baseline; gap: 0.65rem; padding: 0.45rem 0.85rem 0.4rem; border-radius: 999px; background: rgb(10 10 9 / 0.62); font: 700 0.9375rem/1 var(--display); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+.hero-play-len { color: var(--sea); font-variant-numeric: tabular-nums; }
+html:not(.still) .hero-play:hover .hero-play-disc, .hero-play:focus-visible .hero-play-disc { transform: scale(1.07); background: rgb(111 183 216 / 0.24); box-shadow: inset 0 0 0 2px var(--sea), 0 0.6rem 2.2rem rgb(0 0 0 / 0.45); }
+html:not(.still) .hero-video:hover img { outline-color: var(--sea); }
+.hero-play:focus-visible { outline-offset: 3px; }
+@media (max-width: 30rem) { .hero-play-label { font-size: 0.8125rem; padding: 0.35rem 0.7rem 0.3rem; } }
 .kind { display: inline-block; margin-right: 0.45em; font-size: 0.8125rem; line-height: 1.45; color: var(--sea); }
 .hero-text { margin-top: 1.75rem; }
 .now { border-left: 2px solid var(--sea); padding: 0.1rem 0 0.2rem 1.25rem; font-size: 1rem; line-height: 1.55; }
@@ -475,6 +493,69 @@ dialog.viewer::backdrop { background: #080807; }
 
 @keyframes viewer-in { from { opacity: 0; } }
 @keyframes picture-in { from { transform: scale(0.985); } }
+
+/* ---- the theatre: the gameplay video (log.js moves it, player.js and player.css are its controls). The room goes
+   dark (fully: nothing of the page shows through) and the video lights it; the frame scales in as the dark comes
+   down, and on Close the picture goes first and the light comes back slowly. */
+.vh { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+/* While the theatre is open the page is locked: the scrollbar's reserved space goes and the body takes its width as
+   padding (--scrollbar, from log.js), so nothing on the page moves. */
+html.locked { overflow: hidden; scrollbar-gutter: auto; background: #040507; }
+html.locked body { padding-right: var(--scrollbar, 0px); }
+/* Just after a close, the page takes no click (a second click on Close must not land on the page beneath it). */
+html.settling :is(.bar, main, .foot) { pointer-events: none; }
+.theatre { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; overflow: auto; background: transparent; color: #f4ede0; color-scheme: dark; }
+.theatre::backdrop { background: transparent; }
+.tdim { position: fixed; inset: 0; background: #040507; }
+/* The room: as large as the theatre, and the light ends at its walls (clipped there, so the glow that reaches past
+   the screen never gives the theatre anything to scroll). */
+.troom { position: relative; display: flex; min-height: 100%; overflow: clip; }
+/* The glow sits behind the screen and reaches well past it, like a projector's light on the walls of a dark room. */
+.tglow { position: relative; }
+.spill { position: absolute; z-index: -1; left: -24%; top: -42%; width: 148%; height: 184%; max-width: none; opacity: 0; -webkit-mask-image: radial-gradient(closest-side, #000 38%, rgb(0 0 0 / 0)); mask-image: radial-gradient(closest-side, #000 38%, rgb(0 0 0 / 0)); transition: opacity 1200ms ease; pointer-events: none; }
+.theatre.lit .spill { opacity: 0.55; }
+.tframe { position: relative; z-index: 1; width: min(92vw, calc((100svh - 190px) * 16 / 9), 1760px); margin: 0 auto; padding: 22px 0; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.trow { display: flex; align-items: center; gap: 18px; }
+.ttitle { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin: 0; min-width: 0; }
+.tname { font: 700 clamp(1.375rem, 1rem + 1vw, 2rem)/1 "FYR Title", var(--display); letter-spacing: 0.16em; color: #f4ede0; white-space: nowrap; }
+.tkind { font: 700 0.9375rem/1.2 var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: rgb(244 237 224 / 0.72); }
+.tlen { margin: 0 0 0 auto; font: 600 0.9375rem/1 var(--display); letter-spacing: 0.08em; color: rgb(244 237 224 / 0.62); font-variant-numeric: tabular-nums; }
+.theatre .close { flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px 0 18px; border: 0; border-radius: 22px; background: rgb(244 237 224 / 0.1); box-shadow: 0 0 0 1px rgb(244 237 224 / 0.14); color: #f4ede0; font: 700 0.9375rem/1 var(--display); letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background-color 160ms ease; }
+.theatre .close:hover { background: rgb(244 237 224 / 0.18); }
+.theatre .close svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; fill: none; }
+.tscreen { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 14px; background: #000; }
+.tslot, .stage { position: absolute; inset: 0; }
+.stage video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+/* The player in the log's colours: the sea for progress and focus, the page's warm white for icons and text, and the
+   display face for its numbers. */
+.theatre .player { --player-accent: var(--sea); --player-ink: #f4ede0; font-family: var(--display); font-weight: 600; letter-spacing: 0.04em; }
+.tstart, .tend { position: absolute; z-index: 6; inset: 0; display: grid; place-content: center; justify-items: center; gap: 16px; padding: 24px; text-align: center; background: radial-gradient(closest-side, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.3)); }
+.tend { background: rgb(3 4 6 / 0.86); }
+.tstart p { margin: 0; max-width: 34ch; font-size: 0.9375rem; line-height: 1.4; color: rgb(244 237 224 / 0.86); }
+.tline { margin: 0; font: 800 clamp(1.75rem, 1rem + 2.4vw, 3.375rem)/1.06 var(--display); letter-spacing: 0.02em; }
+.tactions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.theatre .cta { display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 24px 0 20px; border: 0; border-radius: 6px; background: #f4ede0; color: #050608; font: 700 1rem/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1); }
+.theatre .cta::before { content: ""; border-left: 11px solid currentColor; border-block: 7px solid transparent; }
+.theatre .cta:hover { transform: translateY(-1px); }
+.theatre .ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 20px; border: 1.5px solid rgb(244 237 224 / 0.45); border-radius: 6px; background: rgb(5 6 8 / 0.4); color: #f4ede0; font: 700 0.9375rem/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: border-color 160ms ease; }
+.theatre .ghost:hover { border-color: #f4ede0; }
+.tnote { margin: 0; font-size: 0.9375rem; line-height: 1.45; color: rgb(244 237 224 / 0.7); }
+.tturn { display: none; margin: 0; font-size: 0.875rem; color: rgb(244 237 224 / 0.7); }
+@media (max-width: 760px) {
+  /* On phones the close button is a round icon (its name stays Close). */
+  .theatre .closeword { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .theatre .close { width: 44px; padding: 0; justify-content: center; }
+  .tframe { width: calc(100vw - 24px); }
+  .tscreen { border-radius: 10px; }
+}
+@media (max-width: 760px) and (orientation: portrait) { .tturn { display: block; } }
+@media (orientation: landscape) and (max-height: 520px) {
+  .tframe { width: min(100vw, calc(100svh * 16 / 9)); padding: 0; gap: 0; }
+  .ttitle, .tlen, .tnote { display: none; }
+  .trow { position: absolute; z-index: 8; top: 10px; right: 10px; }
+  .tscreen { border-radius: 0; }
+}
+@media (forced-colors: active) { .spill, .hero-play::before { display: none; } }
 
 @media (max-width: 40rem) {
   body { font-size: 1.0625rem; line-height: 1.6; }

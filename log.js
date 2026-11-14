@@ -5,7 +5,14 @@
 //   2. An old link to an entry on the single page this log once was (index.html#<entry>) goes to the entry's page.
 //   3. A picture opened large: click or Enter, arrows step through the page's pictures, Escape, the Close button or
 //      a click beside the picture closes it, and the focus goes back to where it was.
-// Nothing is loaded from anywhere and nothing is stored.
+//   4. The gameplay video in the theatre (front page): a click, Enter or Space on the picture's play button dims the
+//      room, scales the frame in and plays the video with the log's own player (player.js and player.css, loaded on
+//      the first sign of interest); its light spills into the dark room. Escape, Close or a click in the dark around
+//      the video: the picture goes first, then the room's light comes back slowly, and the focus returns to the play
+//      button. The page does not scroll behind it, and Tab stays inside it. Without this file the play button is a
+//      link to the video file itself.
+// Nothing is loaded from anywhere but the log itself, and nothing is stored. The pages move whatever the system's
+// animation setting says (the developer's rule for all his sites).
 document.documentElement.classList.add('js');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
       lit.style.setProperty('--my', `${event.clientY - box.top}px`);
       lit.style.setProperty('--r', '6.5rem');
     });
-    lit.addEventListener('pointerleave', () => lit.style.setProperty('--r', '0px'));
+    // (a finger leaves after every tap: that must not put out the light the tap below turns on)
+    lit.addEventListener('pointerleave', (event) => { if (event.pointerType !== 'touch') lit.style.setProperty('--r', '0px'); });
     // no pointer to shine with: a tap on the name shows the line
     lit.addEventListener('click', (event) => { if (!event.target.closest('a')) lit.classList.toggle('lit'); });
   }
@@ -59,6 +67,274 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const button of buttons) button.addEventListener('click', () => pick(button.getAttribute('aria-pressed') === 'true' ? '' : button.dataset.kind));
     const wanted = new URLSearchParams(location.search).get('tag');
     if (wanted && buttons.some((button) => button.dataset.kind === wanted)) pick(wanted);
+  }
+
+  // ---- 4. the gameplay video in the theatre
+  const theatre = $('#theatre');
+  const playButton = $('[data-video]');
+  if (theatre && playButton && typeof HTMLDialogElement === 'function') setUpTheatre(theatre, playButton);
+
+  function setUpTheatre(theatre, playButton) {
+    const root = document.documentElement;
+    const themeMeta = $('meta[name="theme-color"]');
+    const PAGE_THEME = themeMeta?.content ?? '';
+    const THEATRE_THEME = '#040507';
+    const EASE_OPEN = 'cubic-bezier(0.22, 0.8, 0.2, 1)';
+    const SETTLE_MS = 350; // after a close the page takes no click for this long
+    const frame = $('.tframe', theatre);
+    const dim = $('.tdim', theatre);
+    const stage = $('.stage', theatre);
+    const video = $('video', stage);
+    const start = $('.tstart', theatre);
+    const end = $('.tend', theatre);
+    const spill = $('.spill', theatre);
+    let player = null; // { activate, deactivate, focus } once player.js has taken over the video
+    let loading = null;
+    let open = false; // open, or opening
+    let closing = false;
+    let opener = null; // what opened it, to give the focus back
+
+    const setTheme = (colour) => { if (themeMeta && colour) themeMeta.content = colour; };
+    const settleAnimations = () => { for (const el of [frame, dim]) for (const animation of el.getAnimations()) animation.cancel(); };
+
+    // The player and its styles load on the first sign of interest in the video (its own stylesheet goes before the
+    // page's, so the page's settings for it win).
+    function loadPlayer() {
+      if (!loading) {
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = 'player.css';
+        const styled = new Promise((done) => { css.onload = done; css.onerror = done; });
+        document.head.insertBefore(css, $('link[rel="stylesheet"]'));
+        loading = Promise.all([import('./player.js'), styled]).then(([module]) => module);
+        loading.catch(() => { loading = null; });
+      }
+      return loading;
+    }
+    playButton.addEventListener('pointerover', () => { loadPlayer().catch(() => {}); });
+    playButton.addEventListener('focus', () => { loadPlayer().catch(() => {}); });
+
+    async function mount() {
+      if (player) return player;
+      const { mountPlayer } = await loadPlayer();
+      if (!player) {
+        player = mountPlayer(stage, video);
+        video.addEventListener('ended', () => { if (open && !closing) showEnd(); });
+      }
+      return player;
+    }
+
+    // The video's light in the room: a 32 x 18 picture of it, blended in four times a second (so a cut takes about a
+    // second to travel and nothing can flash), shown large and soft behind the screen.
+    const spillContext = spill.getContext('2d');
+    let spillTimer = 0;
+    function startSpill() {
+      stopSpill();
+      const paint = (source, alpha) => {
+        try {
+          spillContext.globalAlpha = alpha;
+          spillContext.drawImage(source, 0, 0, spill.width, spill.height);
+        } catch {
+          // A frame that is not ready yet is simply skipped.
+        }
+      };
+      if (video.poster) {
+        const still = new Image();
+        still.src = video.poster;
+        still.decode().then(() => { if (video.paused) paint(still, 1); }, () => {});
+      }
+      spillTimer = setInterval(() => {
+        if (!video.paused && video.readyState >= 2 && !document.hidden) paint(video, 0.25);
+      }, 250);
+      theatre.classList.add('lit');
+    }
+    function stopSpill() {
+      clearInterval(spillTimer);
+      theatre.classList.remove('lit');
+    }
+
+    // The page is locked under the theatre: the scrollbar's reserved space goes and the body takes its width as
+    // padding, so nothing on the page moves.
+    function lock() {
+      if (!root.classList.contains('locked')) root.style.setProperty('--scrollbar', `${Math.max(0, innerWidth - root.clientWidth)}px`);
+      root.classList.add('locked');
+    }
+
+    // After a close the page takes no click for a moment (a second click on Close must not land on the page beneath
+    // it), and the play button under a resting pointer does not look pointed at until the pointer moves.
+    let settleTimer = 0;
+    function settle() {
+      root.classList.add('settling', 'still');
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(() => root.classList.remove('settling'), SETTLE_MS);
+      let origin = null;
+      const moved = (event) => {
+        if (event.pointerType === 'mouse') {
+          origin ??= [event.clientX, event.clientY];
+          if (Math.hypot(event.clientX - origin[0], event.clientY - origin[1]) < 4) return;
+        }
+        root.classList.remove('still');
+        removeEventListener('pointermove', moved);
+      };
+      addEventListener('pointermove', moved);
+      addEventListener('keydown', () => root.classList.remove('still'), { once: true });
+    }
+
+    async function openTheatre() {
+      if (open) return;
+      open = true;
+      closing = false;
+      opener = playButton;
+      settleAnimations();
+      start.hidden = true;
+      end.hidden = true;
+      if (!video.getAttribute('poster') && video.dataset.poster) video.poster = video.dataset.poster;
+      lock();
+      theatre.showModal();
+      $('.close', theatre).focus({ preventScroll: true });
+      setTheme(THEATRE_THEME);
+      dim.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'ease-out' });
+      frame.animate([{ opacity: 0, transform: 'scale(0.965)' }, { opacity: 1, transform: 'none' }], { duration: 360, easing: EASE_OPEN });
+      let ready = null;
+      try {
+        ready = await mount();
+      } catch {
+        // The player could not load: the browser's own controls play the video instead.
+        video.controls = true;
+      }
+      if (!open || closing) return;
+      if (video.ended) video.currentTime = 0;
+      startSpill();
+      // A click may start the video with sound; if the browser still says no, it waits on its poster with a big
+      // button. The player's controls appear only once it plays.
+      ready?.activate();
+      try {
+        await video.play();
+        if (open && !closing) (ready ?? video).focus({ preventScroll: true });
+        return;
+      } catch {
+        ready?.deactivate();
+      }
+      if (!open || closing) return;
+      start.hidden = false;
+      $('[data-start]', theatre).focus({ preventScroll: true });
+    }
+
+    async function closeTheatre() {
+      if (!open || closing) return;
+      closing = true;
+      video.pause();
+      player?.deactivate();
+      stopSpill();
+      // The picture goes first; then the room's light comes back slowly.
+      await frame.animate([{ opacity: 1 }, { opacity: 0, transform: 'scale(0.985)' }], { duration: 200, easing: 'ease-in', fill: 'forwards' }).finished.catch(() => {});
+      if (open) await dim.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 780, easing: 'cubic-bezier(0.45, 0, 0.25, 1)', fill: 'forwards' }).finished.catch(() => {});
+      if (theatre.open) theatre.close();
+      closed();
+    }
+
+    // The theatre is closed (by its own close, or by the browser itself): the page back as it was.
+    function closed() {
+      if (!open) return;
+      open = false;
+      closing = false;
+      video.pause();
+      player?.deactivate();
+      stopSpill();
+      settleAnimations();
+      root.classList.remove('locked');
+      setTheme(PAGE_THEME);
+      settle();
+      if (opener && opener.isConnected) opener.focus({ preventScroll: true });
+      opener = null;
+    }
+
+    function showEnd() {
+      player.deactivate();
+      end.hidden = false;
+      $('[data-again]', theatre).focus({ preventScroll: true });
+    }
+
+    function playFromTheatre({ restart = false } = {}) {
+      if (!player) return;
+      start.hidden = true;
+      end.hidden = true;
+      if (restart) video.currentTime = 0;
+      player.activate();
+      video.play().catch(() => {
+        player.deactivate();
+        start.hidden = false;
+      });
+      player.focus();
+    }
+
+    // The play button: a click or Enter (a link's own click) opens the theatre; Space opens it when the key comes up,
+    // so that the same key does not then press the Close button the focus has moved to. A click with a modifier
+    // keeps the link's own way (the video file, in a new tab).
+    playButton.setAttribute('role', 'button');
+    playButton.addEventListener('click', (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      openTheatre();
+    });
+    playButton.addEventListener('keydown', (event) => { if (event.key === ' ') event.preventDefault(); });
+    playButton.addEventListener('keyup', (event) => {
+      if (event.key !== ' ') return;
+      event.preventDefault();
+      openTheatre();
+    });
+
+    // A click in the dark around the video (not on the screen, its title row or its note) closes the theatre with
+    // the same motion as Close, as the picture viewer closes on a click beside the picture. The press must begin in
+    // the dark too (a drag along the timeline that ends there is not such a click), and a press that only puts away
+    // an open quality menu does nothing more.
+    const inTheDark = (el) => el === theatre || Boolean(el?.matches?.('.tdim, .troom, .tframe'));
+    let pressedInTheDark = false;
+    theatre.addEventListener('pointerdown', (event) => {
+      pressedInTheDark = inTheDark(event.target) && !$('.player-menu:not([hidden])', theatre);
+    }, true);
+
+    theatre.addEventListener('click', (event) => {
+      if (inTheDark(event.target)) {
+        if (pressedInTheDark) closeTheatre();
+        pressedInTheDark = false;
+        return;
+      }
+      const button = event.target.closest('button');
+      if (!button) return;
+      if (button.matches('[data-close-theatre]')) closeTheatre();
+      else if (button.matches('[data-start]')) playFromTheatre();
+      else if (button.matches('[data-again]')) playFromTheatre({ restart: true });
+    });
+    // Escape closes it with the same motion as the Close button.
+    theatre.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      closeTheatre();
+    });
+    theatre.addEventListener('close', closed);
+
+    // Tab stays inside the theatre: past the last control it comes round to the first, and back.
+    const focusables = () => $$('a[href], button:not([disabled]), summary, [tabindex="0"], input, select, textarea', theatre).filter(
+      (el) => !el.closest('[hidden], [inert]') && el.getClientRects().length > 0 && getComputedStyle(el).visibility !== 'hidden',
+    );
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Tab' || !theatre.open) return;
+      const items = focusables();
+      if (!items.length) return;
+      const first = items[0];
+      const last = items.at(-1);
+      const active = document.activeElement;
+      if (!theatre.contains(active)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      }
+    });
   }
 
   // ---- 3. a picture opened large
