@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The gameplay video, and the faults its takes caught | FYR production log</title>
+  <meta name="description" content="Saturday from 14:30 to 21:30. The keeper got an older voice and an upright walk, the plan shows a turret's arc of fire before it is bought, the hut and the rock answer when touched, and the screening plays the film's…">
+  <meta property="og:title" content="The gameplay video, and the faults its takes caught | FYR production log">
+  <meta property="og:description" content="Saturday from 14:30 to 21:30. The keeper got an older voice and an upright walk, the plan shows a turret's arc of fire before it is bought, the hut and the rock answer when touched, and the screening plays the film's…">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#100f0e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23100f0e'/%3E%3Crect x='9' y='3' width='4' height='6' fill='%236fb7d8'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="log.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the content</a>
+  <header class="bar">
+    <div class="bar-in">
+      <a class="brand" href="index.html"><span class="brand-word">FYR</span> <span class="brand-sub">production log</span></a>
+      <nav class="bar-nav" aria-label="Sections">
+        <a href="making.html">How it is made</a>
+        <a href="notes.html">The developer's note</a>
+        <a href="log.html">Log</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="failures.html">What went wrong</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="entry-page">
+    <article class="entry" id="2026-11-14-2130-the-gameplay-video" data-kinds="video hut plan ending credits process failure">
+      <header class="entry-head">
+        <p class="crumbs"><a href="log.html">The log</a> <span aria-hidden="true">/</span> <a href="log.html#day-3">Day 3</a></p>
+        <p class="slate"><span>Day 3</span> <span>Saturday 14 November</span> <time datetime="2026-11-14T21:30">21:30</time></p>
+        <h1>The gameplay video, and the faults its takes caught</h1>
+        <p class="entry-facts">3 pictures <span aria-hidden="true">·</span> <a href="#failed-1" class="failed">2 failures</a> <span aria-hidden="true">·</span> 12 min read</p>
+        <p class="entry-tags"><a class="tag" href="log.html?tag=video">video</a> <a class="tag" href="log.html?tag=hut">the hut</a> <a class="tag" href="log.html?tag=plan">plan</a> <a class="tag" href="log.html?tag=ending">ending</a> <a class="tag" href="log.html?tag=credits">credits</a> <a class="tag" href="log.html?tag=process">how it is run</a> <a class="tag failure" href="log.html?tag=failure">failure</a></p>
+        <p class="gate"><span>Checkpoint</span> The gameplay video cut, 19:20</p>
+      <nav class="toc" aria-labelledby="toc-2026-11-14-2130-the-gameplay-video">
+        <h2 id="toc-2026-11-14-2130-the-gameplay-video">In this entry</h2>
+        <ol>
+          <li><a href="#an-older-keeper-who-stands-up-straight">An older keeper who stands up straight</a></li>
+          <li><a href="#the-plan-shows-where-a-turret-will-shoot">The plan shows where a turret will shoot</a></li>
+          <li><a href="#the-hut-and-the-rock-answer-when-touched">The hut and the rock answer when touched</a></li>
+          <li><a href="#the-developer-s-evening-round">The developer's evening round</a></li>
+          <li><a href="#what-the-credits-owe">What the credits owe</a></li>
+          <li><a href="#the-gameplay-video">The gameplay video</a></li>
+          <li><a href="#what-the-takes-caught">What the takes caught</a></li>
+          <li><a href="#the-numbers-since-14-30">The numbers since 14:30</a></li>
+          <li><a href="#tools-in-this-entry">Tools in this entry</a></li>
+        </ol>
+      </nav>
+      </header>
+      <div class="body cols">
+<p>This entry covers Saturday from about 14:30 to 21:30, and was written between 20:00 and 21:30 from the commits, the lanes' notes, the video's own records and the check recordings.</p>
+<h6 id="an-older-keeper-who-stands-up-straight">An older keeper who stands up straight</h6>
+<p>The developer heard the keeper's two lines in the ending (one as he sits down, one at THE END) and wanted an older man's voice. The keeper was recast with the voice model as an older man: a new designed voice, measured for its age cues against the old one, with the prompts and every take kept. Since 16:06 the sit line starts after the chair takes his weight and ends before the camera moves, and the end line ends before the credits.</p>
+<p>He also found the generated walk from the morning leaned too far forward. A new round of takes was generated with Kimodo, asking for a man who walks upright and firm. The best take of each clip was chosen by pictures from behind and from the side. His head is lifted and the lean taken out. He holds the launcher across his body, then on his shoulder with both hands closed on its grips. In the chair his hands lie flat on the armrests. The game's clearance checks log the smallest gap between his hands and the launcher or the armrests, and every gap was above zero. The new takes went in at 15:57.</p>
+<details class="prompt"><summary><span class="prompt-name">Prompt</span><span class="prompt-first">0.0 s: A strong, fit man in his fifties in a heavy coat and heavy boots walks steadily forward, upright, tired after a long night but firm…</span><span class="prompt-count">63 words</span></summary><pre>0.0 s: A strong, fit man in his fifties in a heavy coat and heavy boots walks steadily forward, upright, tired after a long night but firm on his feet.
+5.1 s: The man steps up onto a stone step and then over a raised threshold, upright and steady.
+7.7 s: The man takes a few steady steps forward and stops, standing upright.</pre></details>
+<h6 id="the-plan-shows-where-a-turret-will-shoot">The plan shows where a turret will shoot</h6>
+<p>At the PC, hovering over a pad now shows the turret's arc of fire before it is bought. The arc is a warm wedge out to the turret's real range, with its range ring. The part the rock blocks is dimmed and hatched, the rest of the chart dims, and the attack arrows the arc covers light up, with a line that says what it covers. Placed turrets keep a faint arc all the time. A strip of nights under the night's number marks a mothership every fourth night, the last night (20) and the endless nights after it. The plan was then checked at 1920x1080, 2560x1440 and 4:3, and two overlaps at 4:3 were cleared.</p>
+<h6 id="the-hut-and-the-rock-answer-when-touched">The hut and the rock answer when touched</h6>
+<p>Before READY, on foot, the keeper can look at a thing and press E. None of it is needed and none of it can hold him: E, Space or a step lets go, and each lets go by itself in the end.</p>
+<ul><li><strong>The film camera</strong> in the hut, and the film camp's camera and monitor on the rock, play back the drone's own frames of the first mothership's end, from the ending's save. Before that kill the screen says there is no recording yet.</li><li><strong>The bunk:</strong> he lies down, his eyes close, a short sleep with the storm far off, and he wakes.</li><li><strong>The stove:</strong> the kettle goes on, steams and whistles after a while, and the stove door opens on its embers.</li><li><strong>The logbook:</strong> a page for every night played, written from what really happened in it, and kept in the save.</li><li><strong>And more:</strong> the radio (its hiss, then a call in Morse), the wall telephone (a dead line and the wind), the barometer (tapped, its needle settles on tonight's weather), the lamps, the binoculars, the wall clock, and outside the ship's bell, the megaphone (the gulls answer), the director's chair, the generator, the camera drone and the rowing boat.</li></ul>
+<p>Two smaller fixes came with this. Lightning no longer lights the inside of the hut: a strike had lit the room as if it had no roof. And the screening of the drone's film in the ending now plays the sounds the drone heard, at their frames, a little quieter, and never over the keeper's line.</p>
+<h6 id="the-developer-s-evening-round">The developer's evening round</h6>
+<p>The developer played the evening's build and reported four faults. All four were fixed, checked and pushed by 18:16:</p>
+<ul><li><strong>No pointer on the title screen</strong> until he switched to another window and back. The gun's own start set the mouse to game-only a moment after the title had shown the pointer. Now only the game's director decides when the pointer shows, and it checks every frame.</li><li><strong>The Volume slider did nothing.</strong> On Windows the engine sets the game's master volume from the window's focus in every frame, which undid the slider. The slider now sets the audio device's own volume.</li><li><strong>Every slider stuttered while it was dragged.</strong> Each frame of the drag applied every setting again, graphics included. While dragging, only the sound is set now; the rest is applied when the slider is let go.</li><li><strong>The hut's film camera was in the way</strong> of the screening in the ending. The camera had been left out of the ending's room so that it would not block the film, but its small monitor stayed, a dark box in front of the picture. And when the ending was over, the camera stood in the projector's beam. It now stands in the corner between the desk and the stove, out of the beam, the same in the ending as in the game. This was checked through the whole screening and from seven places in the hut.</li></ul>
+<p>He also found that the game took about a minute to reach the title. The build he plays starts in the editor's own program, which loads the editor's modules first. The packaged game does not, and its start will be timed when the final package is made.</p>
+<h6 id="what-the-credits-owe">What the credits owe</h6>
+<p>The jam allows no trademarks or logos except the Unreal Engine logo. The jam's staff confirmed on Friday that attribution a rights owner requires may be shown the way the owner describes, splash screen and credits included. So FYR shows what its licences ask for, and nothing more:</p>
+<ul><li><strong>NVIDIA DLSS and Reflex.</strong> NVIDIA's licence asks for its marks on a splash screen, in an about box if the game has one, and in the credits. FYR has them on a short start-up screen and in the credits, as text. The licence asks for nothing in a video, so the gameplay video shows none.</li><li><strong>The engine's typefaces.</strong> The game's text uses Roboto and Droid Sans Mono, which ship with Unreal Engine under the Apache License 2.0. That licence asks for no line on screen, but its text has to travel with the game. The package now carries a Licenses folder with the licence and a notices file.</li><li><strong>Unreal Engine.</strong> Its licence asks for Epic's copyright notice. That line was missing from the credits and is there now.</li></ul>
+<h6 id="the-gameplay-video">The gameplay video</h6>
+<p>The jam asks for a video of 30 to 60 seconds of recorded gameplay, at 1920x1080 or more, in English. FYR's is 58.8 seconds at 1920x1080 and 30 frames a second, with the game's own sound.</p>
+<p>The takes were filmed by the game itself, off screen and frame by frame, as described in the last entry: every frame is exactly one thirtieth of a second of game time, and the game's own mix is recorded beside the frames, so picture and sound stay in sync. The game's test bot worked the stations, and short test scripts set up each take (which night, the credits for the turrets, when to call CUT). The last entry said the video would be recorded from the packaged game. It was not: the packaged game has neither the console the scripts need nor the frame recorder, so the takes ran in the development build of the same code.</p>
+<p>Five takes were recorded, about seven minutes of game in all: the first night from the hut at dusk, two clear nights, a night in the storm, and the fourth night with its mothership and the first ending. Twenty-one spans were cut from them, with hard cuts and a 40 ms sound fade at each:</p>
+<ol><li>The great lens burns a carrier, and it breaks up in fire.</li><li>The hut: the plan on the PC, a Twin Gun placed with its arc of fire.</li><li>READY: out of the door and up to the tower, ACTION! at the gun.</li><li>The gun at dusk, the laser on a flock, the lens through another, and the turrets firing on their own.</li><li>CUT!: time stops, the tablet comes up, a Flak Gun is bought onto a pad, ACTION.</li><li>The fourth night: the lens on the mothership, then the drone filming the keeper as he fires the rocket, and the ship breaking up and falling into the sea.</li><li>The walk home, the projector, the chair, and the night replayed on the hut's wall.</li></ol>
+<p>Gameplay shows from the first frame. A title and seven short captions sit over the gameplay, never over black: PLAN THE NIGHT AT THE PC, WALK OUT TO THE LIGHTHOUSE, DEFEND THE LAMP, YOUR TURRETS FIRE ON THEIR OWN, CUT! STOPS THE NIGHT, EVERY FOURTH NIGHT, A MOTHERSHIP, and THEN WALK HOME. They are set in the engine's own Roboto Bold Condensed and were rendered with HyperFrames as a transparent layer. Their spelling was checked in a still at each one. Under the first night runs the game's own boss music, 8 dB down. The sound was brought to -14 LUFS with a true peak of -2.7 dB, measured on the finished file. The developer checks the video and uploads it himself.</p>
+<figure id="fig-1"><a class="zoom" href="media/2026-11-14-1920-video-title.jpg"><img src="media/2026-11-14-1920-video-title.jpg" srcset="media/thumb/2026-11-14-1920-video-title.jpg 640w, media/2026-11-14-1920-video-title.jpg 1280w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The video's first second: the great lens burns a carrier on the third night and it blows apart, the title over it. The lamp bar, the stations and the live map are the game's own screen." width="1280" height="720" loading="lazy" decoding="async"></a><figcaption aria-hidden="true">The video's first second: the great lens burns a carrier on the third night and it blows apart, the title over it. The lamp bar, the stations and the live map are the game's own screen.</figcaption></figure>
+<figure id="fig-2"><a class="zoom" href="media/2026-11-14-1920-video-cut.jpg"><img src="media/2026-11-14-1920-video-cut.jpg" srcset="media/thumb/2026-11-14-1920-video-cut.jpg 640w, media/2026-11-14-1920-video-cut.jpg 1280w" sizes="(max-width: 44rem) 100vw, 64rem" alt="CUT! in the video: time stopped and the keeper's tablet up, a Flak Gun picked, its arc of fire over the night's arrows; the caption is the video's." width="1280" height="720" loading="lazy" decoding="async"></a><figcaption aria-hidden="true">CUT! in the video: time stopped and the keeper's tablet up, a Flak Gun picked, its arc of fire over the night's arrows; the caption is the video's.</figcaption></figure>
+<figure id="fig-3"><a class="zoom" href="media/2026-11-14-1920-video-wall.jpg"><img src="media/2026-11-14-1920-video-wall.jpg" srcset="media/thumb/2026-11-14-1920-video-wall.jpg 640w, media/2026-11-14-1920-video-wall.jpg 1280w" sizes="(max-width: 44rem) 100vw, 64rem" alt="The video's last shot but one: the keeper in his chair watches the drone's film of his own rocket on the hut's wall." width="1280" height="720" loading="lazy" decoding="async"></a><figcaption aria-hidden="true">The video's last shot but one: the keeper in his chair watches the drone's film of his own rocket on the hut's wall.</figcaption></figure>
+<p>Two shots that were planned could not be staged. A close laser cut &quot;in two&quot;: the bot only cuts saucers at long range, where the beam does not read. And a close look at the turrets: from the gun they cannot be seen, because the gun's lowest pitch is 12 degrees down and the gallery's brackets sit below it. The video shows the turrets' flak bringing down a flock beside the gun instead.</p>
+<h6 id="what-the-takes-caught">What the takes caught</h6>
+<aside class="failure" id="failed-1"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>Four faults that every automated check had passed</strong></p>
+<p>Every run of the game is checked by its log, its tests and strips of pictures taken every few seconds. None of that saw these four faults; looking at the video's takes frame by frame did. The shots they spoiled were left out of the video.</p></aside>
+<ul><li><strong>A white disc over the gun.</strong> On the fourth night a white disc grew over half the gun's view and stood there for most of a second. It is the mothership's shield going down: a glowing ball the size of its shield bubble, at full brightness for 0.8 seconds. Seen from the gun, a few hundred metres away, it covered half the picture. Dimming the ball was not enough: at a tenth of its glow, and then at a hundredth, it still showed as a pale disc. Now a glowing ball that would cover more than about twenty degrees of the view is not drawn at all, and up to that it thins. The shield's flash of light, its sound, the keeper's line and the boss bar still mark the moment, and its light is shorter (0.6 s) and less strong.</li><li><strong>A gun that turned white.</strong> When three bolts hit the lamp together, their flashes, a few metres above the gun, lit the gun and the keeper's gloves pale white for a quarter of a second. A lamp hit's flash is now dimmed steeply by how near the eye is to it: at the gun, a few metres from the lamp, it is a two-hundredth of what it was, a faint flicker on the iron.</li><li><strong>A smeared hit.</strong> As the rocket hit the mothership, the drone's picture went white and smeared for about a second. Two things did it. The drone turned from the rocket's point to the ship's middle at full speed, a whip-pan made worse by the blast's shake; the turn now eases in over a second and a half. And a pale sheet with square edges lay over the picture. A test run with the engine's volumetric fog switched off for two seconds around the hit had no sheet: the blasts' flashes were lighting the fog all round the camera, half a kilometre from the ship, because a mothership's flashes reach for kilometres. Now a blast's flash lights no fog at all; its fireballs and lit smoke carry the blast.</li><li><strong>A white head.</strong> On his way from the projector's switch to his chair, the keeper's head passes through the first metre of the projector's beam, its brightest part, and the beam's glow drawn over it turned his head flat white. A head in a projector's beam blocks it, so the beam now dims while his head is in it, and the picture on the wall a little.</li></ul>
+<aside class="failure" id="failed-2"><p class="failure-head"><span class="failure-mark">Failure</span> <strong>Three of the first fixes were wrong guesses, and three more were too weak</strong></p>
+<p>The fourth night was recorded seven more times between 19:30 and 21:30, each time with the fixes built so far. The first round was wrong three times. The white disc had been put down to the great lens's fading power after a switch to the gun; the new take showed the disc starting the moment the mothership's shield went down, seconds after any switch. The white head had been put down to the projector's small spill light; dimming that light changed nothing, because the white was the beam itself. The sheet after the hit had been put down to a large sprite in front of the camera; switching the fog off showed it was the fog. Then three right fixes were too weak: the dimmed ball still showed as a pale disc; flashes that lit the fog less only near the camera changed nothing, because the camera was 500 m from the blast; and the lamp hit's flash, dimmed as far as the kill flashes are, still turned the gun pale for three frames. Each wrong change was taken out again. In the last takes all four faults are gone.</p></aside>
+<h6 id="the-numbers-since-14-30">The numbers since 14:30</h6>
+<p>Counted at 20:00, before the fixes above: lines of game code went from 36,984 to 41,142, and commits from 448 to 468. Rodin jobs (135), kinds of 3D model (130), pictures from the image model (596), sound effects (275), spoken lines (50) and pieces of music (8) are unchanged: the afternoon's work was in code, motion and a recast voice.</p>
+<h6 id="tools-in-this-entry">Tools in this entry</h6>
+<p>Claude Code; Unreal Engine 5.9 and its Kimodo plugin, with Kimodo-SOMA-RP-v1.1 (NVIDIA) and Meta Llama 3 8B Instruct with LLM2Vec as its text encoder, in the editor only. Built with Meta Llama 3. Ming-3.0 TTS for the keeper's older voice. HyperFrames for the video's title and captions; ffmpeg to cut the video and measure its sound.</p>
+      </div>
+    </article>
+    <nav class="turn" aria-label="Earlier and later entries">
+      <a class="turn-prev" href="2026-11-14-1435-the-keeper-learns-to-move.html" rel="prev"><span class="turn-label">Earlier</span><span class="turn-pic"><img src="media/thumb/2026-11-14-0241-doorstep.jpg" alt="" width="640" height="344" loading="lazy" decoding="async"></span><span class="turn-when">Sat 14 Nov, 14:35</span><span class="turn-title">Watching the ending, and a keeper who moves like a tired old man</span></a>
+      <span class="turn-none"></span>
+    </nav>
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <p>FYR is a solo entry in the 2026 Epic AI MegaJam (theme: Director's Cut), made between Thursday 12 November and Sunday 15 November 2026, Danish time. Team name: Faluf.</p>
+      <p>This site is built from plain text entries by a small script and holds no tracking, no cookies and no requests to other servers. The game's source is in a private repository; its commit history shows when each thing was made.</p>
+      <p class="foot-links"><a href="index.html">Front page</a> <a href="log.html">All entries</a> <a href="gallery.html">Gallery</a> <a href="failures.html">What went wrong</a> <a href="#top">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>
