@@ -81,8 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const items = $$('[data-kinds], .tile[data-kind]', $('main'));
     const empty = $('.empty');
     const kindsOf = (item) => (item.dataset.kinds ?? item.dataset.kind ?? '').split(' ').filter(Boolean);
+    // the log's filters fold into one button that names the topic picked
+    const box = filters.closest('.filter-box');
+    const now = box && $('.filter-now', box);
     const pick = (kind) => {
       for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.kind === kind));
+      if (now) {
+        const chosen = kind && buttons.find((button) => button.dataset.kind === kind);
+        now.textContent = chosen ? chosen.firstChild.textContent.trim() : 'All entries';
+        box.classList.toggle('picked', Boolean(chosen));
+      }
       for (const item of items) item.hidden = Boolean(kind) && !kindsOf(item).includes(kind);
       // a day, an entry's group of pictures or a day of pictures with nothing left to show is hidden too
       for (const group of $$('.day, .pentry, .pday')) group.hidden = !$$('[data-kinds], .tile[data-kind]', group).some((item) => !item.hidden);
