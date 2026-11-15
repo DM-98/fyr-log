@@ -34,6 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (/^day-/.test(asked) && !document.getElementById(asked)) { location.replace(`log.html#${asked}`); return; }
   }
 
+  // ---- times: written in Danish time (CET, UTC+1 in November); each one shows the reader's own time when pointed at
+  // (the developer, 15 November: the judges may read it in America). The text keeps the Danish times: they are also
+  // written in its sentences and the days are Danish days.
+  {
+    let mine = null;
+    try { mine = new Intl.DateTimeFormat('en-US', { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' }); } catch {}
+    for (const time of $$('time[datetime]')) {
+      const at = /^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2})$/.exec(time.getAttribute('datetime') ?? '');
+      if (!at || !mine) continue;
+      const when = new Date(`${at[1]}T${at[2]}:00+01:00`);
+      if (Number.isNaN(when.getTime())) continue;
+      time.title = `Danish time (CET). Your time: ${mine.format(when)}`;
+      time.classList.add('has-zone');
+    }
+  }
+
   // ---- 0. the torch on the name: a circle of light under the pointer shows the line above the title
   const lit = $('.hero-name.has-reveal');
   if (lit) {

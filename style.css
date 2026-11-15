@@ -665,3 +665,8 @@ details.more-failures .failure-list { margin-top: 0.6rem; }
 html:not(.js) .filters { display: none; }
 /* studio pictures and drawings are shown whole in their tile, not cropped */
 .tile:is([data-kind="made"], [data-kind="drawing"], [data-kind="render"]) img { object-fit: contain; background: var(--ground-3); }
+
+/* The note that the log's times are Danish, and the times that show the reader's own when pointed at (log.js). */
+.time-note { margin: 0.4rem 0 1rem; color: var(--faint); font-size: 0.875rem; }
+.entry-head .time-note { margin: 0.35rem 0 0; }
+time.has-zone { cursor: help; text-decoration: underline dotted rgb(141 135 125 / 0.6); text-underline-offset: 0.18em; }
