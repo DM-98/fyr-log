@@ -50,18 +50,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ---- 0. the torch on the name: a circle of light under the pointer shows the line above the title
+  // ---- 0. the lighthouse on the name: with the pointer on the name, left of the lamp, the beam stops sweeping and turns
+  // toward the pointer, and the line above the title shows (the developer's idea, 15 November); off the name, or right of
+  // the lamp, the sweep starts again from its first frame, the beam, the flash and the line together.
   const lit = $('.hero-name.has-reveal');
+  const house = lit && $('.reveal-house', lit);
   if (lit) {
     lit.addEventListener('pointermove', (event) => {
-      if (event.pointerType === 'touch') return;
-      const box = lit.getBoundingClientRect();
-      lit.style.setProperty('--mx', `${event.clientX - box.left}px`);
-      lit.style.setProperty('--my', `${event.clientY - box.top}px`);
-      lit.style.setProperty('--r', '6.5rem');
+      if (event.pointerType === 'touch' || !house) return;
+      const box = house.getBoundingClientRect();
+      // the lamp, at (12, 8.5) of the tower's 24 x 48 drawing
+      const dx = event.clientX - (box.left + box.width * (12 / 24));
+      const dy = event.clientY - (box.top + box.height * (8.5 / 48));
+      if (dx > -6) { lit.classList.remove('follow'); return; }
+      // (left of the lamp the angle runs 90-270, never across 180/-180, so the beam never swings round the long way)
+      const aim = (Math.atan2(dy, dx) * 180) / Math.PI;
+      lit.style.setProperty('--aim', `${aim < 0 ? aim + 360 : aim}deg`);
+      lit.classList.add('follow');
     });
     // (a finger leaves after every tap: that must not put out the light the tap below turns on)
-    lit.addEventListener('pointerleave', (event) => { if (event.pointerType !== 'touch') lit.style.setProperty('--r', '0px'); });
+    lit.addEventListener('pointerleave', (event) => { if (event.pointerType !== 'touch') lit.classList.remove('follow'); });
     // no pointer to shine with: a tap on the name shows the line
     lit.addEventListener('click', (event) => { if (!event.target.closest('a')) lit.classList.toggle('lit'); });
   }

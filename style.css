@@ -120,6 +120,10 @@ img { max-width: 100%; }
 .reveal a:hover, .reveal a:focus-visible { text-decoration: underline; }
 .reveal .reveal-here { color: var(--soft); }
 .hero-name.has-reveal .reveal:hover, .hero-name.has-reveal .reveal:focus-within, .hero-name.has-reveal.lit .reveal { animation: none; opacity: 1; }
+/* The pointer on the name, left of the lamp (log.js): the beam turns to it, steady, and the line shows. */
+.hero-name.follow .rh-beam { animation: none; transform: rotate(var(--aim, 180deg)); transition: transform 0.12s ease-out; }
+.hero-name.follow .rh-glow { animation: none; opacity: 1; transform: scale(1.35); }
+.hero-name.follow .reveal { animation: none; opacity: 1; }
 /* The beams reach past the name; they must not make a phone's page scroll sideways. */
 .hero { overflow-x: clip; }
 .gloss { margin: 0.9rem 0 0; color: var(--faint); font-size: 1rem; font-style: italic; }
