@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ready for the hand-in | FYR production log</title>
-  <meta name="description" content="Sunday evening, the last entry before the developer hands FYR in. He played the new package and found that everything works. Two last things were fixed: the sea was too loud, and the title screen lost its tower. One…">
+  <meta name="description" content="Sunday evening, the last entry before the developer hands FYR in. He played the new package and found that everything works. The last fixes: the sea and the rain were too loud, the title screen lost its tower, and DLSS…">
   <meta property="og:title" content="Ready for the hand-in | FYR production log">
-  <meta property="og:description" content="Sunday evening, the last entry before the developer hands FYR in. He played the new package and found that everything works. Two last things were fixed: the sea was too loud, and the title screen lost its tower. One…">
+  <meta property="og:description" content="Sunday evening, the last entry before the developer hands FYR in. He played the new package and found that everything works. The last fixes: the sea and the rain were too loud, the title screen lost its tower, and DLSS…">
   <meta property="og:type" content="website">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#100f0e">
@@ -38,13 +38,15 @@
         <p class="crumbs"><a href="log.html">The log</a> <span aria-hidden="true">/</span> <a href="log.html#day-4">Day 4</a></p>
         <p class="slate"><span>Day 4</span> <span>Sunday 15 November</span> <time datetime="2026-11-15T20:25">20:25</time></p>
         <h1>Ready for the hand-in</h1>
-        <p class="entry-facts">3 min read</p>
+        <p class="entry-facts">4 min read</p>
         <p class="entry-tags"><a class="tag" href="log.html?tag=playtest">playtests</a> <a class="tag" href="log.html?tag=sound">sound</a> <a class="tag" href="log.html?tag=package">package</a> <a class="tag" href="log.html?tag=process">how it is run</a></p>
         <p class="gate"><span>Checkpoint</span> The final package for the hand-in, 20:25</p>
       <nav class="toc" aria-labelledby="toc-2026-11-15-2025-ready-for-the-hand-in">
         <h2 id="toc-2026-11-15-2025-ready-for-the-hand-in">In this entry</h2>
         <ol>
-          <li><a href="#the-sea-halved">The sea, halved</a></li>
+          <li><a href="#the-sea-and-the-rain-halved">The sea and the rain, halved</a></li>
+          <li><a href="#dlaa-by-default">DLAA by default</a></li>
+          <li><a href="#switching-ray-tracing-on">Switching ray tracing on</a></li>
           <li><a href="#the-title-screen-without-its-tower">The title screen without its tower</a></li>
           <li><a href="#an-idea-for-after-the-jam">An idea for after the jam</a></li>
           <li><a href="#the-numbers-counted-again">The numbers, counted again</a></li>
@@ -54,9 +56,14 @@
       </header>
       <div class="body cols">
 <p>This entry covers Sunday from 19:50 to 20:25. It is the last one before the developer hands the game in.</p>
-<p>The developer played the package with the new finale and found that everything works. He had two last notes and one idea.</p>
-<h6 id="the-sea-halved">The sea, halved</h6>
+<p>The developer played the package with the new finale and found that everything works. He had a few last notes and one idea.</p>
+<h6 id="the-sea-and-the-rain-halved">The sea and the rain, halved</h6>
 <p>The sea was too loud, on the title screen and when walking on the rock. Its two sounds are the steady bed of the sea and the waves breaking on the rock. They were mixed louder than the rain and the wind: in a full storm the bed played at 0.8, against 0.6 for the rain and 0.55 for the wind. Both sea sounds are now at half that level, six decibels quieter.</p>
+<p>A few minutes later the developer asked for much quieter rain as well. The rain plays in five places: the storm round the lighthouse, the rain on its iron, the storm heard on the rock before READY, the walk to the tower, and the roof of the hut. All five were halved the same way.</p>
+<h6 id="dlaa-by-default">DLAA by default</h6>
+<p>The DLSS mode used to start at Quality, which draws two thirds of the screen's resolution and lets DLSS rebuild the rest. That is the safe choice for an unknown PC. The jam's judges play on powerful PCs, so the game now starts at DLAA: the full resolution, with DLSS only smoothing the edges. That is the better picture. A player who has already chosen keeps their choice.</p>
+<h6 id="switching-ray-tracing-on">Switching ray tracing on</h6>
+<p>While trying the settings, the developer saw the game stop for about ten seconds when he chose ray tracing &quot;On with shadows&quot;. That is not a fault. Ray tracing is off by default, and switching it on makes the engine build its ray tracing structures for every model in the scene and prepare the ray tracing shaders for every material. That happens once, at the switch, and the game runs smoothly after it.</p>
 <h6 id="the-title-screen-without-its-tower">The title screen without its tower</h6>
 <p>On the title screen the lighthouse showed as a lit glass drum floating over the rock, with no tower under it. The title's shot of the lighthouse, as if from a boat at sea, uses the gun's own camera. The great lens is fired from inside the lantern, so while it is the chosen weapon the tower is hidden and the lamp room is drawn in its place. The developer's last game had ended with the lens chosen. The title screen then counted as &quot;inside the lantern&quot; and hid the tower. The lamp room now takes over only during a night, never on the title screen.</p>
 <h6 id="an-idea-for-after-the-jam">An idea for after the jam</h6>
@@ -65,7 +72,7 @@
 <p>The front page's numbers were counted again from the repository and the records. They now stand at 41,739 lines of C++, 135 Rodin jobs, 130 kinds of 3D model in the game, 596 pictures from the image model, 275 synthesised sound effects, 50 spoken lines, 8 pieces of music and about 500 commits.</p>
 <p>One line was taken out. It said three Poly Haven assets were used, because three surfaces were fetched on the first day and named in the declaration. None of them was ever imported: no file of the game's content and no line of its code names them. Every surface in the game is our own. The counter now counts only what is in the game, and the declaration says so.</p>
 <h6 id="what-is-handed-in">What is handed in</h6>
-<p>The final package is one zip of under a gigabyte. It holds the game for 64-bit Windows and the runtime it needs, and nothing of the project itself. It passes every automatic check: the zip's name and size, the game in it, no project files, the runtime, and the gameplay video's length, size and sound. Its finale is the one in the entry before this, with the sea and the title screen fixed.</p>
+<p>The final package is one zip of under a gigabyte. It holds the game for 64-bit Windows and the runtime it needs, and nothing of the project itself. It passes every automatic check: the zip's name and size, the game in it, no project files, the runtime, and the gameplay video's length, size and sound. Its finale is the one in the entry before this, with the sea, the rain, the title screen and the DLSS default changed as above.</p>
 <p>The developer hands in the zip, the gameplay video, the cover picture and the page's text himself, with the tools listed: Rodin among them, and NVIDIA's Kimodo with its text encoder, Built with Meta Llama 3.</p>
       </div>
     </article>
