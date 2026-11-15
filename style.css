@@ -33,6 +33,8 @@
 
   --display: "Big Shoulders Display", "Arial Narrow", "Helvetica Neue Condensed", Impact, sans-serif;
   --text: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  /* reading text: the reader's own system sans (the developer, 15 November: modern reading; the serif stays on titles) */
+  --sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, Arial, sans-serif;
   --mono: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
   --measure: 40rem;
   --wide: 72rem;
@@ -42,7 +44,7 @@
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-gutter: stable; background: var(--ground); }
-body { margin: 0; background: var(--ground); color: var(--ink); font: 380 1.125rem/1.65 var(--text); font-optical-sizing: auto; overflow-wrap: break-word; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 400 1.0625rem/1.65 var(--sans); font-optical-sizing: auto; overflow-wrap: break-word; }
 a { color: inherit; text-decoration-color: var(--sea-line); text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
 a:hover { color: var(--sea); text-decoration-color: currentColor; }
 :focus-visible { outline: 2px solid var(--sea); outline-offset: 3px; border-radius: 2px; }
@@ -175,7 +177,7 @@ html:not(.still) .hero-video:hover img { outline-color: var(--sea); }
 /* ---- sections of the front page */
 .section { padding-top: clamp(3.5rem, 7vw, 5.5rem); }
 .section-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1rem; margin: 0 0 1.5rem; padding-top: 0.9rem; border-top: 1px solid var(--rule-strong); font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem); line-height: 1.05; letter-spacing: 0.04em; }
-.section-title .count, .section-title .counted { font: 400 1rem/1.4 var(--text); text-transform: none; letter-spacing: 0; color: var(--soft); }
+.section-title .count, .section-title .counted { font: 400 1rem/1.4 var(--sans); text-transform: none; letter-spacing: 0; color: var(--soft); }
 .section-note { max-width: var(--measure); margin: -0.5rem 0 1.5rem; color: var(--soft); font-size: 1.0625rem; text-wrap: pretty; }
 .minor { margin: 0 0 0.9rem; font-size: 1rem; color: var(--soft); letter-spacing: 0.09em; }
 
@@ -260,7 +262,7 @@ details.how dd { margin: 0.1rem 0 0; text-wrap: pretty; }
 .j-name.j-other { fill: #e3a84a; text-decoration: underline; }
 .journey-map a:hover .j-name, .journey-map a:focus-visible .j-name { fill: var(--ink); }
 .j-when { font: 600 0.9375rem/1 var(--display); letter-spacing: 0.1em; text-transform: uppercase; fill: var(--sea); }
-.j-note { font: 400 1rem/1 var(--text); fill: var(--soft); }
+.j-note { font: 400 1rem/1 var(--sans); fill: var(--soft); }
 .j-runner { fill: #fff3d1; filter: drop-shadow(0 0 6px rgb(255 236 190 / 0.9)); offset-path: path("M70 40 L70 128 C70 172 190 150 190 198 L190 268 C190 314 70 292 70 336 L70 600"); offset-rotate: 0deg; animation: j-run 7.5s cubic-bezier(0.45, 0, 0.55, 1) 3.6s infinite; opacity: 0; }
 @keyframes j-draw { to { stroke-dashoffset: 0; } }
 @keyframes j-show { to { opacity: 1; } }
@@ -425,7 +427,7 @@ a.tag:hover { border-color: var(--sea); color: var(--ink); }
 .body li + li { margin-top: 0.45rem; }
 .body li::marker { color: var(--faint); }
 .body strong { font-weight: 650; }
-.body blockquote { font: italic 400 1.375rem/1.45 var(--text); padding: 0.4rem 0 0.4rem 1.25rem; border-left: 2px solid var(--rule-strong); }
+.body blockquote { font: italic 400 1.3125rem/1.5 var(--sans); padding: 0.4rem 0 0.4rem 1.25rem; border-left: 2px solid var(--rule-strong); }
 .body blockquote p { margin: 0; }
 .body code { font: 0.86em/1.4 var(--mono); background: var(--ground-3); padding: 0.1em 0.32em; border-radius: 3px; }
 .body pre { background: var(--ground-3); border-radius: 6px; padding: 0.9rem 1rem; overflow-x: auto; font: 0.875rem/1.6 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; }
