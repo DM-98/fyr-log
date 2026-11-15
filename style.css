@@ -97,7 +97,7 @@ img { max-width: 100%; }
    the beam lies over it, or while the pointer is on it (with a little room round it), its link has the focus or the name
    is tapped. The beam, the flash and the line run on one clock of 7 s from the page's load. */
 .hero-name.has-reveal { position: relative; justify-self: start; width: max-content; max-width: 100%; padding-top: 1.9rem; }
-.title .reveal-house { display: inline-block; vertical-align: baseline; width: 0.49em; height: 0.98em; margin-left: 0.02em; overflow: visible; pointer-events: none; }
+.title .reveal-house { display: inline-block; vertical-align: baseline; width: 0.49em; height: 0.98em; margin-left: 0.02em; margin-top: -0.3em; overflow: visible; pointer-events: none; }      /* (the negative top margin: the tower rises above the letters without making their line taller, so the line above keeps its place) */
 .rh-beam { transform-box: view-box; transform-origin: 12px 8.5px; animation: rh-sweep 7s infinite; filter: blur(3px); }
 @keyframes rh-sweep {
   0% { transform: scaleX(1); animation-timing-function: ease-in; }
