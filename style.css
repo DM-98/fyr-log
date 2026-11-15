@@ -150,6 +150,26 @@ html:not(.still) .hero-video:hover img { outline-color: var(--sea); }
 .now .slate { display: flex; flex-wrap: wrap; gap: 0 1rem; color: var(--sea); font-size: 0.9375rem; }
 .now-text { color: var(--ink); text-wrap: pretty; }
 .now-latest { color: var(--soft); margin-bottom: 0 !important; }
+/* The finished state of the corner (site.mjs, statusCard): a card, the word large with a tick, the ways to the game. */
+.now.status {
+  border-left: 0; border: 1px solid var(--rule-strong); border-top: 2px solid var(--sea); border-radius: 2px;
+  padding: 1.25rem 1.4rem 1.4rem;
+  background: linear-gradient(160deg, rgb(111 183 216 / 0.09), rgb(111 183 216 / 0.015) 60%), var(--ground-2);
+}
+.status-word { display: flex; align-items: center; gap: 0.6rem; margin: 0.45rem 0 0.7rem !important; font: 800 clamp(2rem, 1.4rem + 1.6vw, 2.75rem)/1 var(--display); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); }
+.status-tick { flex: none; width: 0.82em; height: 0.82em; }
+.status-tick circle { fill: rgb(111 183 216 / 0.14); stroke: var(--sea); stroke-width: 1.6; }
+.status-tick path { fill: none; stroke: var(--sea); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 16; stroke-dashoffset: 16; animation: tick-draw 0.7s ease-out 0.4s forwards; }
+@keyframes tick-draw { to { stroke-dashoffset: 0; } }
+.status .now-text { color: var(--soft); }
+.status-links { display: grid; gap: 0.55rem; margin: 1.1rem 0 0 !important; }
+.status-go {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.7rem 1rem; border: 1px solid var(--sea); border-radius: 2px;
+  color: var(--sea); font: 700 0.875rem/1 var(--display); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.status-go.first { background: var(--sea); color: var(--screen); }
+.status-go:hover, .status-go:focus-visible { background: var(--ink); border-color: var(--ink); color: var(--screen); }
 .now-latest time { color: var(--soft); }
 
 /* ---- sections of the front page */
