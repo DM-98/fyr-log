@@ -278,6 +278,62 @@ details.how dd { margin: 0.1rem 0 0; text-wrap: pretty; }
 .day-name { font-size: 2.125rem; line-height: 1.1; letter-spacing: 0.05em; color: var(--sea); }
 .day-date { font: 600 1.1875rem/1.3 var(--text); }
 .day-goal { margin: 0.25rem 0 0.25rem; max-width: var(--measure); color: var(--soft); font-size: 1rem; font-style: italic; text-wrap: pretty; }
+
+/* The interlude (site.mjs, interlude): a strip of film spliced in between two days, sprocket holes along both edges; the
+   work's line in the sea's blue, the time away a dashed amber siding off it, a point of light running the whole way. */
+.interlude {
+  --amber: #e3a84a;
+  position: relative; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0.5rem 1.75rem; align-items: center;
+  margin: 2.75rem 0 0; padding: 2.25rem clamp(1rem, 3vw, 2.25rem);
+  background: linear-gradient(180deg, rgb(227 168 74 / 0.07), rgb(227 168 74 / 0.015) 60%), var(--screen);
+  border-block: 1px solid var(--rule-strong);
+}
+.interlude::before, .interlude::after {
+  content: ""; position: absolute; left: 0.6rem; right: 0.6rem; height: 0.45rem; pointer-events: none;
+  background-image: linear-gradient(90deg, var(--rule-strong) 0 0.75rem, transparent 0.75rem);
+  background-size: 1.6rem 100%; background-repeat: repeat-x;
+}
+.interlude::before { top: 0.65rem; }
+.interlude::after { bottom: 0.65rem; }
+.interlude + .day { margin-top: 2.75rem; }
+.interlude-map { display: block; width: 100%; height: auto; max-height: 14rem; overflow: visible; }
+.interlude-map path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.i-main { stroke: var(--sea); stroke-width: 3; }
+.i-wait { stroke: var(--sea-line); stroke-width: 2; stroke-dasharray: 2 8; opacity: 0.55; }
+.i-side { stroke: var(--amber); stroke-width: 3; stroke-dasharray: 7 6; animation: i-march 1.6s linear infinite; }
+.i-stop { fill: var(--screen); stroke: var(--sea); stroke-width: 2.5; }
+.i-stop.i-other { stroke: var(--amber); }
+.i-runner {
+  fill: #fff3d1; filter: drop-shadow(0 0 5px rgb(255 236 190 / 0.9)); offset-rotate: 0deg;
+  offset-path: path("M40 0 L40 44 C40 86 96 74 96 114 L96 128 C96 168 40 156 40 196 L40 240");
+  animation: i-run 6.5s ease-in-out infinite;
+}
+@keyframes i-march { to { stroke-dashoffset: -26; } }
+@keyframes i-run { 0% { offset-distance: 0%; opacity: 0; } 6% { opacity: 1; } 90% { offset-distance: 100%; opacity: 1; } 96%, 100% { offset-distance: 100%; opacity: 0; } }
+@supports not (offset-path: path("M0 0 L1 1")) { .i-runner { display: none; } }
+.interlude-kicker { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.9rem; }
+.interlude-word { font: 700 0.95rem/1 var(--display); letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); }
+.interlude-when { font: 600 0.8125rem/1.3 var(--mono); color: var(--soft); }
+.interlude-title { margin: 0.4rem 0 0.5rem; font: 800 clamp(1.75rem, 3.6vw, 2.5rem)/1.02 var(--display); letter-spacing: 0.035em; text-transform: uppercase; color: var(--ink); }
+.interlude-text { margin: 0; max-width: 35rem; color: var(--soft); font-size: 1rem; text-wrap: pretty; }
+.interlude-links { margin: 1.1rem 0 0; }
+.interlude-go {
+  display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.05rem; border: 1px solid var(--amber); border-radius: 2px;
+  color: var(--amber); font: 700 0.875rem/1 var(--display); letter-spacing: 0.13em; text-transform: uppercase; text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.interlude-go:hover, .interlude-go:focus-visible { background: var(--amber); color: var(--screen); }
+.interlude-back { margin: 1.2rem 0 0; font: 700 0.8125rem/1 var(--display); letter-spacing: 0.22em; text-transform: uppercase; color: var(--sea); }
+.interlude-stamp {
+  position: absolute; right: clamp(1.25rem, 3.5vw, 3rem); top: 50%; z-index: 0; pointer-events: none; user-select: none;
+  padding: 0.1em 0.3em 0; border: 3px solid rgb(227 168 74 / 0.45); border-radius: 4px;
+  font: 800 clamp(3.5rem, 7.5vw, 6.25rem)/1 var(--display); letter-spacing: 0.06em; text-transform: uppercase;
+  color: transparent; -webkit-text-stroke: 2px rgb(227 168 74 / 0.5);
+  transform: translateY(-50%) rotate(-8deg); opacity: 0.85;
+}
+.interlude > svg, .interlude-body { position: relative; z-index: 1; }
+@media (max-width: 64rem) { .interlude-stamp { display: none; } }
+@media (max-width: 40rem) { .interlude { grid-template-columns: 4.25rem minmax(0, 1fr); gap: 0.5rem 1rem; } }
 .rows { list-style: none; margin: 0.75rem 0 0; padding: 0; }
 .row-link { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 1.4rem; padding: 1.1rem 0; border-top: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
 .row-link:hover { color: var(--ink); }
