@@ -540,6 +540,9 @@ details.prompt > pre { margin: 0; padding: 0.35rem 1rem 1.1rem; background: none
 .foot { margin-top: 6rem; padding: 2.5rem 0 3.5rem; border-top: 1px solid var(--rule); font-size: 0.9375rem; line-height: 1.6; color: var(--soft); }
 .foot p { margin: 0 0 0.7rem; max-width: 50rem; text-wrap: pretty; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-top: 1.5rem !important; color: var(--ink); }
+/* the game and the jam entry on itch.io, as the two buttons of the front page's card */
+.foot .foot-play { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.6rem 0 0; max-width: none; }
+.foot-play .status-go { flex: 0 1 17rem; }
 
 /* ---- a picture opened large: the room goes dark and the picture is the bright thing in it */
 .viewing { overflow: hidden; }
